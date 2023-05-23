@@ -22,7 +22,7 @@ int main()
 	
 	if(opcion==1)
 	{
-		printf("hola");
+		
 	}
 	
 	
