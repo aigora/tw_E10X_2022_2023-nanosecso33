@@ -3,19 +3,25 @@
 
 int main()
 {
-	printf("Acaba de ingresar en la pagina de datos de 2021 y 2022 de la Red Electrica Espanola.\n");
-	printf("Si desea cargar el fichero para analizar y consultar los datos pulse 1, si no desea acceder a los datos pulse 2.\n");
+	system("cls");
+	printf("Acaba de ingresar en la pagina de datos de 2021 y 2022 de la Red Electrica Espanola.\nSeleccione que opcion quiere llevar a cabo:\n\n");
+	printf("1. Cargar el fichero para analizar y consultar los datos.\n");
+	printf("2. No acceder a los datos.\n\n");
+	printf("Opcion a escoger: ");
 	int opcion, opcion2;
 	scanf("%i", &opcion);
 	switch(opcion)
 	{
 		case 1:
+			system("cls");
 			printf("Cargando fichero...\n");
 			break;
 		case 2:
+			system("cls");
 			printf("Ha seleccionado no cargar el fichero, programa finalizado.\n");
 			break;
 		default:
+			system("cls");
 			printf("Algo salio mal, programa interrumpido.\n");
 			break;			
 	}
