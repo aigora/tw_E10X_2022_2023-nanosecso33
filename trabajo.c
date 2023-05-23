@@ -3,7 +3,7 @@
 
 int main()
 {
-	printf("Acaba de ingresar en la página de datos de 2021 y 2022 de la Red Eléctrica Española.\n");
+	printf("Acaba de ingresar en la pagina de datos de 2021 y 2022 de la Red Electrica Espanola.\n");
 	printf("Si desea cargar el fichero para analizar y consultar los datos pulse 1, si no desea acceder a los datos pulse 2.\n");
 	int opcion;
 	scanf("%i", &opcion);
@@ -16,10 +16,14 @@ int main()
 			printf("Ha seleccionado no cargar el fichero, programa finalizado.\n");
 			break;
 		default:
-			printf("Algo salió mal, programa interrumpido.");
+			printf("Algo salio mal, programa interrumpido.");
 			break;			
 	}
 	
+	if(opcion==1)
+	{
+		printf("hola");
+	}
 	
 	
 	
