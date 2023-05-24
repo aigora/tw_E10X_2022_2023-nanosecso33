@@ -57,6 +57,7 @@ int main()
 			printf("Fichero abierto correctamente.\n");
 			return 0;
 		}
+		
 	}
 	
 	
