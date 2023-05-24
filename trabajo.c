@@ -1,5 +1,20 @@
 #include <stdio.h>
 
+void buscarPorTipo(FILE *pf, int opcion4)
+{
+    char linea[1000];   
+    while (fgets(linea, sizeof(linea), pf) != NULL)
+    {  
+        if (opcion4 == 1 && strstr(linea, "Renovable") != NULL)
+        {
+            printf("%s \n", linea); 
+        }
+        else if (opcion4 == 2 && strstr(linea, "No renovable") != NULL)
+        {
+            printf("%s \n", linea);
+        }
+    }
+}
 
 int main()
 {
@@ -123,7 +138,16 @@ int main()
 		else if(opcion3==3)
 		{
 			system("cls");
-			printf("Seleccione el tipo de energia que quiere ver en pantalla:\n");
+			printf("\nSeleccione el tipo de energía que desea buscar:\n\n");
+                printf("1. Renovable\n");
+                printf("2. No renovable\n");
+                printf("Opcion a escoger: ");
+                
+				scanf("%i", &opcion4);
+                
+                buscarPorTipo(pf, opcion4);
+                fclose(pf);
+		
 		}
 		else
 		{
