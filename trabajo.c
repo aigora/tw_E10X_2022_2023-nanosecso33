@@ -5,7 +5,7 @@ int main()
 {
 	system("cls");
 	printf("Acaba de ingresar en la pagina de datos de 2021 y 2022 de la Red Electrica Espanola.\nSeleccione que opcion quiere llevar a cabo:\n\n");
-	printf("1. Cargar el fichero para analizar y consultar los datos.\n");
+	printf("1. Cargar el fichero para analizar o consultar los datos.\n");
 	printf("2. No acceder a los datos.\n\n");
 	printf("Opcion a escoger: ");
 	int opcion, opcion2;
