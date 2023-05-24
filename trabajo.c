@@ -54,7 +54,7 @@ int main()
 	{
 		int opcion3 /*elegir entre las 4 opciones del menu de apertura de datos*/, opcion4 /*elegir entre 2021 o 2022 en el apartado 1*/;
 		int mes1 /*seleccion de mes de la opcion 1 2021*/, mes2 /*seleccion de mes de la opcion 1 2022*/;
-		int mes3 /*seleccion de mes de la opcion 2 2021*/, mes4 /*seleccion de mes de la opcion 2 2022*/, opcion5 /*elegir entre renovable o no*/;
+		int mes3 /*seleccion de mes de la opcion 2 2021*/, mes4 /*seleccion de mes de la opcion 2 2022*/, opcion5/*elegir entre renovable y no renovable*/;
 		FILE *pf;
 		pf = fopen("generacion_por_tecnologias_21_22_puntos_simplificado.csv", "r");
 		if (pf == NULL)
@@ -101,7 +101,7 @@ int main()
 		else if(opcion3==2)
 		{
 			system("cls");
-			printf("Seleccione el anho del que quiere ver los datos:\n\n");
+			printf("Seleccione el anho del que quiere ver los datos:\n");
 			printf("1. 2021\n2. 2022\n\n");
 			printf("Opcion a elegir: ");
 			scanf("%i", &opcion4);
@@ -125,7 +125,7 @@ int main()
 		else if(opcion3==3)
 		{
 			system("cls");
-			printf("\nSeleccione el tipo de energia que desea buscar:\n\n");
+			printf("\nSeleccione el tipo de energía que desea buscar:\n\n");
                 printf("1. Renovable\n");
                 printf("2. No renovable\n\n");
                 printf("Opcion a escoger: ");
@@ -141,6 +141,11 @@ int main()
 			printf("Fin del programa.\n");	
 		}
 	}
+	
+	
+	
+	
+	
 	
 	return 0;
 }
@@ -161,6 +166,6 @@ void buscarPorTipo(FILE *pf, int opcion5)
     }
     if(opcion5!=1 && opcion5!=2)
     {
-    	printf("Error, ejecuta el programa de nuevo.");
+    	printf("Error, ejecuta de nuevo el programa.");
 	}
 }
