@@ -105,13 +105,16 @@ int main()
 			scanf("%i", &opcion4);
 			if(opcion4==1)
 			{
-				printf("Escriba el numero del mes del 2022 que desee:\n\n");
+				printf("Escriba el numero del mes del 2021 que desee:\n\n");
+				printf("1. Enero \n 2. Febrero\n 3. Marzo\n 4. Abril\n 5. Mayo\n 6. Junio\n 7. Julio\n 8. Agosto\n 9. Septiembre\n 10. Octubre\n 11. Noviembre\n 12. Diciembre\n ");
 				printf("Mes seleccionado: ");
 				scanf("%i", &mes3);
+				
 			}
 			else if(opcion4==2)
 			{
 				printf("Escriba el numero del mes del 2022 que desee:\n\n");
+			    printf("1. Enero \n 2. Febrero\n 3. Marzo\n 4. Abril\n 5. Mayo\n 6. Junio\n 7. Julio\n 8. Agosto\n 9. Septiembre\n 10. Octubre\n 11. Noviembre\n 12. Diciembre\n ");
 				printf("Mes seleccionado: ");
 				scanf("%i", &mes4);
 			}
