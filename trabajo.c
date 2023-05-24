@@ -28,7 +28,10 @@ int main()
 	
 	if(opcion!=1)
 	{
-		printf("Si desea intentarlo de nuevo pulsa 1.\n");
+		printf("Que desea hacer ahora?:\n\n");
+		printf("1. Intentarlo de nuevo.\n");
+		printf("2. Salir.\n\n");
+		printf("Opcion a escoger: ");
 		scanf("%i", &opcion2);
 		if(opcion2==1)
 		{
