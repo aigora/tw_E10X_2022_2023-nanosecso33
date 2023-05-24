@@ -1,5 +1,7 @@
 #include <stdio.h>
+#include <string.h>
 
+void buscarPorTipo(FILE *pf, int opcion5);
 
 int main()
 {
@@ -52,7 +54,7 @@ int main()
 	{
 		int opcion3 /*elegir entre las 4 opciones del menu de apertura de datos*/, opcion4 /*elegir entre 2021 o 2022 en el apartado 1*/;
 		int mes1 /*seleccion de mes de la opcion 1 2021*/, mes2 /*seleccion de mes de la opcion 1 2022*/;
-		int mes3 /*seleccion de mes de la opcion 2 2021*/, mes4 /*seleccion de mes de la opcion 2 2022*/, opcion5;
+		int mes3 /*seleccion de mes de la opcion 2 2021*/, mes4 /*seleccion de mes de la opcion 2 2022*/, opcion5 /*elegir entre renovable o no*/;
 		FILE *pf;
 		pf = fopen("generacion_por_tecnologias_21_22_puntos_simplificado.csv", "r");
 		if (pf == NULL)
@@ -99,13 +101,13 @@ int main()
 		else if(opcion3==2)
 		{
 			system("cls");
-			printf("Seleccione el anho del que quiere ver los datos:\n");
+			printf("Seleccione el anho del que quiere ver los datos:\n\n");
 			printf("1. 2021\n2. 2022\n\n");
 			printf("Opcion a elegir: ");
 			scanf("%i", &opcion4);
 			if(opcion4==1)
 			{
-				printf("Escriba el numero del mes del 2022 que desee:\n\n");
+				printf("Escriba el numero del mes del 2021 que desee:\n\n");
 				printf("Mes seleccionado: ");
 				scanf("%i", &mes3);
 			}
@@ -123,7 +125,16 @@ int main()
 		else if(opcion3==3)
 		{
 			system("cls");
-			printf("Seleccione el tipo de energia que quiere ver en pantalla:\n");
+			printf("\nSeleccione el tipo de energia que desea buscar:\n\n");
+                printf("1. Renovable\n");
+                printf("2. No renovable\n\n");
+                printf("Opcion a escoger: ");
+                
+				scanf("%i", &opcion5);
+                
+                buscarPorTipo(pf, opcion5);
+                fclose(pf);
+		
 		}
 		else
 		{
@@ -131,10 +142,25 @@ int main()
 		}
 	}
 	
-	
-	
-	
-	
-	
 	return 0;
+}
+
+void buscarPorTipo(FILE *pf, int opcion5)
+{
+    char linea[1000];   
+    while (fgets(linea, sizeof(linea), pf) != NULL)
+    {  
+        if (opcion5 == 1 && strstr(linea, "Renovable") != NULL)
+        {
+            printf("\n%s \n", linea); 
+        }
+        else if (opcion5 == 2 && strstr(linea, "No renovable") != NULL)
+        {
+            printf("\n%s \n", linea);
+        }
+    }
+    if(opcion5!=1 && opcion5!=2)
+    {
+    	printf("Error, ejecuta el programa de nuevo.");
+	}
 }
