@@ -37,9 +37,13 @@ int main()
 		{
 			main();
 		}
-		else
+		else if(opcion2==2)
 		{
 			printf("Programa finalizado definitivamente.");
+		}
+		else
+		{
+			printf("Error, programa finalizado definitivamente.");
 		}
 	}
 	
