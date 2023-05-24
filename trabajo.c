@@ -4,12 +4,11 @@
 int main()
 {
 	system("cls");
-	printf("Acaba de ingresar en la pagina de datos de 2021 y 2022 de la Red Electrica Espanola.\nEn esta pagina podra consultar la energia generada mensualmente por cada seccion.\n\n");
-	printf("Seleccione que opcion quiere llevar a cabo:\n\n");
+	printf("Acaba de ingresar en la pagina de datos de 2021 y 2022 de la Red Electrica Espanola.\nSeleccione que opcion quiere llevar a cabo:\n\n");
 	printf("1. Cargar el fichero para analizar y consultar los datos.\n");
 	printf("2. No acceder a los datos.\n\n");
 	printf("Opcion a escoger: ");
-	int opcion /*esta opcion es para cargar el fichero o no*/, opcion2 /*esta opcion es para volver al inicio o terminar definitivamente el programa*/;
+	int opcion, opcion2;
 	scanf("%i", &opcion);
 	switch(opcion)
 	{
@@ -50,8 +49,6 @@ int main()
 	
 	if(opcion==1)
 	{
-		int opcion3 /*elegir entre las 4 opciones del menu de apertura de datos*/, opcion4 /*elegir entre 2021 o 2022 en el apartado 1*/;
-		int opcion5;
 		FILE *pf;
 		pf = fopen("generacion_por_tecnologias_21_22_puntos_simplificado.csv", "r");
 		if (pf == NULL)
@@ -61,65 +58,10 @@ int main()
 		}
 		else
 		{
-			printf("Fichero abierto correctamente.\n\n");
+			printf("Fichero abierto correctamente.\n");
+			return 0;
 		}
-		printf("MENU PARA LA APERTURA DE DATOS\n\nIndique la opcion que desea seleccionar:\n\n");
-		printf("1. Realizar un calculo con los datos deseados.\n");
-		printf("2. Mostrar los datos mensuales para analizarlos.\n");
-		printf("3. Clasificar las secciones en energia renovable y no renovable.\n");
-		printf("4. Salir.\n\n");
-		printf("Opcion a elegir: ");
-		scanf("%i", &opcion3);
-		if(opcion3==1)
-		{
-			system("cls");
-			printf("Seleccione el anho del que quiere los datos:\n\n");
-			printf("1. 2021\n2. 2022\n\n");
-			printf("Opcion a elegir: ");
-			scanf("%i", &opcion4);
-			if(opcion4==1)
-			{
-				printf("hola");
-			}
-			else if(opcion4==2)
-			{
-				printf("hola");
-			}
-			else
-			{
-			printf("Algo salio mal, el programa ha terminado.");
-			}
-			
-		}
-		else if(opcion3==2)
-		{
-			system("cls");
-			printf("Seleccione el anho del que quiere ver los datos:\n");
-			printf("1. 2021\n2. 2022\n\n");
-			printf("Opcion a elegir: ");
-			scanf("%i", &opcion4);
-			if(opcion4==1)
-			{
-				printf("hola");
-			}
-			else if(opcion4==2)
-			{
-				printf("hola");
-			}
-			else
-			{
-				printf("Algo salio mal, el programa ha terminado.");
-			}
-		}
-		else if(opcion3==3)
-		{
-			system("cls");
-			printf("Seleccione el tipo de energia que quiere ver en pantalla:\n");
-		}
-		else
-		{
-			printf("Fin del programa.\n");	
-		}
+		
 	}
 	
 	
