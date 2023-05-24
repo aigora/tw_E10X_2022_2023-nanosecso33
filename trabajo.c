@@ -26,7 +26,7 @@ int main()
 			break;			
 	}
 	
-	if(opcion!=1)
+	if(opcion==2)
 	{
 		printf("Que desea hacer ahora?:\n\n");
 		printf("1. Intentarlo de nuevo.\n");
