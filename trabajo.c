@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 void buscarPorTipo(FILE *pf, int opcion4)
 {
