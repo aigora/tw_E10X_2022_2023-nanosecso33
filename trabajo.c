@@ -50,7 +50,7 @@ int main()
 	if(opcion==1)
 	{
 		FILE *pf;
-		pf = fopen("C:/Users/VORPC/Documents/GitHub/tw_E10X_2022_2023-nanosecso33/generacion_por_tecnologias_21_22_puntos_simplificado.csv", "r");
+		pf = fopen("generacion_por_tecnologias_21_22_puntos_simplificado.csv", "r");
 		if (pf == NULL)
 		{
 			printf("Error al abrir el fichero.\n");
