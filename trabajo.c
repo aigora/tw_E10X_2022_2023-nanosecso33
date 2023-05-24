@@ -51,7 +51,8 @@ int main()
 	if(opcion==1)
 	{
 		int opcion3 /*elegir entre las 4 opciones del menu de apertura de datos*/, opcion4 /*elegir entre 2021 o 2022 en el apartado 1*/;
-		int opcion5;
+		int mes1 /*seleccion de mes de la opcion 1 2021*/, mes2 /*seleccion de mes de la opcion 1 2022*/;
+		int mes3 /*seleccion de mes de la opcion 2 2021*/, mes4 /*seleccion de mes de la opcion 2 2022*/, opcion5;
 		FILE *pf;
 		pf = fopen("generacion_por_tecnologias_21_22_puntos_simplificado.csv", "r");
 		if (pf == NULL)
@@ -79,11 +80,15 @@ int main()
 			scanf("%i", &opcion4);
 			if(opcion4==1)
 			{
-				printf("hola");
+				printf("Escriba el numero del mes del 2021 que desee:\n\n");
+				printf("Mes seleccionado: ");
+				scanf("%i", &mes1);
 			}
 			else if(opcion4==2)
 			{
-				printf("hola");
+				printf("Escriba el numero del mes del 2022 que desee:\n\n");
+				printf("Mes seleccionado: ");
+				scanf("%i", &mes2);
 			}
 			else
 			{
@@ -100,11 +105,15 @@ int main()
 			scanf("%i", &opcion4);
 			if(opcion4==1)
 			{
-				printf("hola");
+				printf("Escriba el numero del mes del 2022 que desee:\n\n");
+				printf("Mes seleccionado: ");
+				scanf("%i", &mes3);
 			}
 			else if(opcion4==2)
 			{
-				printf("hola");
+				printf("Escriba el numero del mes del 2022 que desee:\n\n");
+				printf("Mes seleccionado: ");
+				scanf("%i", &mes4);
 			}
 			else
 			{
