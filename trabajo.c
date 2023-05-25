@@ -1,25 +1,7 @@
 #include <stdio.h>
 #include <string.h>
-typedef struct{
-int año;
-int mes;
-}tiempo;
 
-<<<<<<< HEAD
 float energia_media_2021(FILE *pf, int mes1);
-=======
-typedef struct {
-int ind;
-int gneneral;
-tiempo datoconsult [];
-}energia;
-
-struct orden{
-int mayor;
-int pred;
-int menor;
-energia energiaconsult [];
->>>>>>> b6fb2e9c71e9fde0ead8b1bdd4d46a1c263319b8
 void buscarPorTipo(FILE *pf, int opcion5);
 
 int main()
@@ -72,17 +54,11 @@ int main()
 	if(opcion==1)
 	{
 		int opcion3 /*elegir entre las 4 opciones del menu de apertura de datos*/, opcion4 /*elegir entre 2021 o 2022 en el apartado 1*/;
-<<<<<<< HEAD
 		int calculo_2021 /*elegir entre comparar todos los meses del 2021 o mirar solo uno*/, tipo_calculo /*elegir calculo (2021)*/;
 		int calculo_2022 /*elegir entre comparar todos los meses del 2022 o mirar solo uno*/, tipo_calculo2 /*elegir calculo (2022)*/;
 		int mes1 /*seleccion de mes de la opcion 1 2021*/, i, mes2 /*seleccion de mes de la opcion 1 2022*/;
 		int mes3 /*seleccion de mes de la opcion 2 2021*/, mes4 /*seleccion de mes de la opcion 2 2022*/, opcion5 /*elegir entre renovable y no renovable*/;
 		
-=======
-		int calculo_2021 /*elegir entre comparar todos los meses del 2021 o mirar solo uno*/, tipo_calculo /*elegir calculo*/;
-		int mes1 /*seleccion de mes de la opcion 1 2021*/, mes2 /*seleccion de mes de la opcion 1 2022*/;
-		int mes3 /*seleccion de mes de la opcion 2 2021*/, mes4 /*seleccion de mes de la opcion 2 2022*/, opcion5 /*elegir entre renovable y no renovable*/;
->>>>>>> b6fb2e9c71e9fde0ead8b1bdd4d46a1c263319b8
 		FILE *pf;
 		pf = fopen("generacion_por_tecnologias_21_22_puntos_simplificado.csv", "r");
 		if (pf == NULL)
@@ -111,15 +87,9 @@ int main()
 			scanf("%i", &opcion4);
 			if(opcion4==1)
 			{
-<<<<<<< HEAD
 				//while(calculo_2021!=1 || calculo_2021!=2)
 				//{
 					//fflush(stdin);
-=======
-				while(calculo_2021!=1 || calculo_2021!=2)
-				{
-					fflush(stdin);
->>>>>>> b6fb2e9c71e9fde0ead8b1bdd4d46a1c263319b8
 					system("cls");	
 					printf("Seleccione que prefiere hacer:\n\n");
 					printf("1. Ver los datos de un mes concreto\n");
@@ -131,7 +101,6 @@ int main()
 						printf("\nEscriba el numero del mes del 2021 que desee:\n\n");
 						printf("Mes seleccionado: ");
 						scanf("%i", &mes1);
-<<<<<<< HEAD
 						if(mes1>0 && mes1<13)
 						{
 							system("cls");
@@ -175,34 +144,13 @@ int main()
 								system("cls");
 							}
 							
-=======
-						switch(mes1)
-						{
-							case 1:
-								system("cls");
-								printf("Ha seleccionado enero.\nEscoja que operacion desea realizar:\n\n");
-								printf("1. Energia media generada\n");
-								printf("2. Suma de las energias (energia total)\n");
-								printf("3. Energia maxima\n");
-								printf("4. Energia minima\n");
-								printf("5. Rango de los datos\n");
-								printf("6. Suma de la energia renovable\n");
-								printf("7. Suma de la energia no renovable\n\n");
-								printf("Opcion a elegir: ");
-								scanf("%i", &tipo_calculo);
-						
->>>>>>> b6fb2e9c71e9fde0ead8b1bdd4d46a1c263319b8
 						}
 					}
 					if(calculo_2021==2)
 					{
 						
 					}
-<<<<<<< HEAD
 				//}
-=======
-				}
->>>>>>> b6fb2e9c71e9fde0ead8b1bdd4d46a1c263319b8
 			}
 			else if(opcion4==2)
 			{
