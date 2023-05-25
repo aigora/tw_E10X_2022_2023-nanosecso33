@@ -1,6 +1,21 @@
 #include <stdio.h>
 #include <string.h>
+typedef struct{
+int año;
+int mes;
+}tiempo;
 
+typedef struct {
+int ind;
+int gneneral;
+tiempo datoconsult [];
+}energia;
+
+struct orden{
+int mayor;
+int pred;
+int menor;
+energia energiaconsult [];
 void buscarPorTipo(FILE *pf, int opcion5);
 
 int main()
