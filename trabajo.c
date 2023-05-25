@@ -152,7 +152,7 @@ int main()
 					}
 					if(calculo_2021==2)
 					{
-						
+						printf("jdnfj");
 					}
 				}
 			}
@@ -226,10 +226,6 @@ int main()
 						
 					}
 				}
-			}
-			else
-			{
-			printf("Algo salio mal, el programa ha terminado.");
 			}
 			
 		}
