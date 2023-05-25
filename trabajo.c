@@ -56,7 +56,7 @@ int main()
 		int opcion3 /*elegir entre las 4 opciones del menu de apertura de datos*/, opcion4 /*elegir entre 2021 o 2022 en el apartado 1*/;
 		int calculo_2021 /*elegir entre comparar todos los meses del 2021 o mirar solo uno*/, tipo_calculo /*elegir calculo (2021)*/;
 		int calculo_2022 /*elegir entre comparar todos los meses del 2022 o mirar solo uno*/, tipo_calculo2 /*elegir calculo (2022)*/;
-		int mes1 /*seleccion de mes de la opcion 1 2021*/, i, mes2 /*seleccion de mes de la opcion 1 2022*/;
+		int mes1 /*seleccion de mes de la opcion 1 2021*/, i, mes2 /*seleccion de mes de la opcion 1 2022*/, j;
 		int mes3 /*seleccion de mes de la opcion 2 2021*/, mes4 /*seleccion de mes de la opcion 2 2022*/, opcion5 /*elegir entre renovable y no renovable*/;
 		
 		FILE *pf;
@@ -87,9 +87,9 @@ int main()
 			scanf("%i", &opcion4);
 			if(opcion4==1)
 			{
-				//while(calculo_2021!=1 || calculo_2021!=2)
-				//{
-					//fflush(stdin);
+				while(calculo_2021!=1 && calculo_2021!=2)
+				{
+					fflush(stdin);
 					system("cls");	
 					printf("Seleccione que prefiere hacer:\n\n");
 					printf("1. Ver los datos de un mes concreto\n");
@@ -98,63 +98,67 @@ int main()
 					scanf("%i", &calculo_2021);
 					if(calculo_2021==1)
 					{
-						printf("\nEscriba el numero del mes del 2021 que desee:\n\n");
-						printf("Mes seleccionado: ");
-						scanf("%i", &mes1);
-						if(mes1>0 && mes1<13)
+						while(mes1<1 || mes1>12)
 						{
-							system("cls");
-							printf("Ha seleccionado el mes %i.\nEscoja que operacion desea realizar:\n\n", mes1);
-							printf("1. Energia media generada\n");
-							printf("2. Suma de las energias (energia total)\n");
-							printf("3. Energia maxima\n");
-							printf("4. Energia minima\n");
-							printf("5. Rango de los datos\n");
-							printf("6. Suma de la energia renovable\n");
-							printf("7. Suma de la energia no renovable\n\n");
-							printf("Opcion a elegir: ");
-							scanf("%i", &tipo_calculo);
-						 	if(tipo_calculo==1)
+							fflush(stdin);
+							printf("\nEscriba el numero del mes del 2021 que desee:\n\n");
+							printf("Mes seleccionado: ");
+							scanf("%i", &mes1);
+							if(mes1>0 && mes1<13)
 							{
 								system("cls");
-								printf("La energia media ");
-							}
-							if(tipo_calculo==2)
-							{
-								system("cls");
-							}
-							if(tipo_calculo==3)
-							{
-								system("cls");
-							}
-							if(tipo_calculo==4)
-							{
-								system("cls");
-							}
-							if(tipo_calculo==5)
-							{
-								system("cls");
-							}
-							if(tipo_calculo==6)
-							{
-								system("cls");
-							}
-							if(tipo_calculo==7)
-							{
-								system("cls");
-							}
+								printf("Ha seleccionado el mes %i.\nEscoja que operacion desea realizar:\n\n", mes1);
+								printf("1. Energia media generada\n");
+								printf("2. Suma de las energias (energia total)\n");
+								printf("3. Energia maxima\n");
+								printf("4. Energia minima\n");
+								printf("5. Rango de los datos\n");
+								printf("6. Suma de la energia renovable\n");
+								printf("7. Suma de la energia no renovable\n\n");
+								printf("Opcion a elegir: ");
+								scanf("%i", &tipo_calculo);
+						 		if(tipo_calculo==1)
+								{
+									system("cls");
+									printf("La energia media ");
+								}
+								if(tipo_calculo==2)
+								{
+									system("cls");
+								}
+								if(tipo_calculo==3)
+								{
+									system("cls");
+								}
+								if(tipo_calculo==4)
+								{
+									system("cls");
+								}
+								if(tipo_calculo==5)
+								{
+									system("cls");
+								}
+								if(tipo_calculo==6)
+								{
+									system("cls");
+								}
+								if(tipo_calculo==7)
+								{
+									system("cls");
+								}
 							
+							}
 						}
 					}
 					if(calculo_2021==2)
 					{
 						
 					}
-				//}
+				}
 			}
-			else if(opcion4==2)
+			if(opcion4==2)
 			{
-				while(calculo_2022!=1 || calculo_2022!=2)
+				while(calculo_2022!=1 && calculo_2022!=2)
 				{
 					fflush(stdin);
 					system("cls");	
@@ -165,52 +169,56 @@ int main()
 					scanf("%i", &calculo_2022);
 					if(calculo_2022==1)
 					{
-						printf("\nEscriba el numero del mes del 2022 que desee:\n\n");
-						printf("Mes seleccionado: ");
-						scanf("%i", &mes2);
-						if(mes2>0 && mes2<13)
+						while(mes2<1 || mes2>12)
 						{
-							system("cls");
-							printf("Ha seleccionado el mes %i.\nEscoja que operacion desea realizar:\n\n", mes2);
-							printf("1. Energia media generada\n");
-							printf("2. Suma de las energias (energia total)\n");
-							printf("3. Energia maxima\n");
-							printf("4. Energia minima\n");
-							printf("5. Rango de los datos\n");
-							printf("6. Suma de la energia renovable\n");
-							printf("7. Suma de la energia no renovable\n\n");
-							printf("Opcion a elegir: ");
-							scanf("%i", &tipo_calculo2);
-						 	if(tipo_calculo2==1)
+							fflush(stdin);
+							printf("\nEscriba el numero del mes del 2021 que desee:\n\n");
+							printf("Mes seleccionado: ");
+							scanf("%i", &mes2);
+							if(mes2>0 && mes2<13)
 							{
 								system("cls");
-								printf("La energia media ");
-							}
-							if(tipo_calculo2==2)
-							{
-								system("cls");
-							}
-							if(tipo_calculo2==3)
-							{
-								system("cls");
-							}
-							if(tipo_calculo2==4)
-							{
-								system("cls");
-							}
-							if(tipo_calculo2==5)
-							{
-								system("cls");
-							}
-							if(tipo_calculo2==6)
-							{
-								system("cls");
-							}
-							if(tipo_calculo2==7)
-							{
-								system("cls");
-							}
+								printf("Ha seleccionado el mes %i.\nEscoja que operacion desea realizar:\n\n", mes2);
+								printf("1. Energia media generada\n");
+								printf("2. Suma de las energias (energia total)\n");
+								printf("3. Energia maxima\n");
+								printf("4. Energia minima\n");
+								printf("5. Rango de los datos\n");
+								printf("6. Suma de la energia renovable\n");
+								printf("7. Suma de la energia no renovable\n\n");
+								printf("Opcion a elegir: ");
+								scanf("%i", &tipo_calculo2);
+						 		if(tipo_calculo2==1)
+								{
+									system("cls");
+									printf("La energia media ");
+								}
+								if(tipo_calculo2==2)
+								{
+									system("cls");
+								}
+								if(tipo_calculo2==3)
+								{
+									system("cls");
+								}
+								if(tipo_calculo2==4)
+								{
+									system("cls");
+								}
+								if(tipo_calculo2==5)
+								{
+									system("cls");
+								}
+								if(tipo_calculo2==6)
+								{
+									system("cls");
+								}
+								if(tipo_calculo2==7)
+								{
+									system("cls");
+								}
 							
+							}
 						}
 					}
 					if(calculo_2022==2)
