@@ -257,7 +257,7 @@ int main()
 		{
 			system("cls");
 			printf("\nSeleccione el tipo de energia que desea buscar:\n");
-			printf("(Aparecera cada seccion, con la energia (GWh) generada en cada mes (separada por comas) desde enero de 2021 hasta diciembre de 2022)\n\n"); 
+			printf("(Aparecera cada seccion, con la energia (GWh) generada en cada mes (separada por comas) desde enero de 2021 hasta diciembre de 2022) y se descargaran dichos datos en un archivo nuevo\n\n"); 
             printf("1. Renovable\n");
             printf("2. No renovable\n\n");
             printf("Opcion a escoger: ");
@@ -281,18 +281,25 @@ int main()
 
 void buscarPorTipo(FILE *pf, int opcion5)
 {
+	FILE *tipoEnergia;
+	tipoEnergia = fopen("datos_tipo_energia.txt", "w");
 	char linea[1000]; 
     while (fgets(linea, sizeof(linea), pf) != NULL)
     {  
 		if (opcion5 == 1 && strstr(linea, "Renovable") != NULL)
         {
 			printf("\n%s \n", linea); 
+			fprintf(tipoEnergia, "%s\n", linea);
+			
         }
         else if (opcion5 == 2 && strstr(linea, "No renovable") != NULL)
         {
             printf("\n%s \n", linea);
+            fprintf(tipoEnergia, "%s\n", linea);
         }
     }
+    fclose(tipoEnergia);
+    printf("Datos descargados correctamente");
     if(opcion5!=1 && opcion5!=2)
     {
     	printf("Error, ejecuta de nuevo el programa.");
