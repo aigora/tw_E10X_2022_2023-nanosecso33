@@ -172,7 +172,7 @@ int main()
 						while(mes2<1 || mes2>12)
 						{
 							fflush(stdin);
-							printf("\nEscriba el numero del mes del 2021 que desee:\n\n");
+							printf("\nEscriba el numero del mes del 2022 que desee:\n\n");
 							printf("Mes seleccionado: ");
 							scanf("%i", &mes2);
 							if(mes2>0 && mes2<13)
