@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-float energia_media_2021(FILE *pf, int mes);
+float energia_media_2021(int mes);
 void buscarPorTipo(FILE *pf, int opcion5);
 
 int main()
@@ -122,7 +122,7 @@ int main()
 							 		if(tipo_calculo==1)
 									{
 										system("cls");
-										printf("La energia media ");
+										printf("La energia media en el mes %i es %f.", mes1);
 									}
 									if(tipo_calculo==2)
 									{
@@ -233,26 +233,26 @@ int main()
 		}
 		else if(opcion3==2)
 		{
-			system("cls");
-			printf("Seleccione el anho del que quiere ver los datos:\n");
-			printf("1. 2021\n2. 2022\n\n");
-			printf("Opcion a elegir: ");
-			scanf("%i", &opcion4);
-			if(opcion4==1)
+			while(opcion4!=1 && opcion4!=2)
 			{
-				printf("Escriba el numero del mes del 2021 que desee:\n\n");
-				printf("Mes seleccionado: ");
-				scanf("%i", &mes3);
-			}
-			else if(opcion4==2)
-			{
-				printf("Escriba el numero del mes del 2022 que desee:\n\n");
-				printf("Mes seleccionado: ");
-				scanf("%i", &mes4);
-			}
-			else
-			{
-				printf("Algo salio mal, el programa ha terminado.");
+				fflush(stdin);
+				system("cls");
+				printf("Seleccione el anho del que quiere ver los datos:\n\n");
+				printf("1. 2021\n2. 2022\n\n");
+				printf("Opcion a elegir: ");
+				scanf("%i", &opcion4);
+				if(opcion4==1)
+				{
+					printf("Escriba el numero del mes del 2021 que desee:\n\n");
+					printf("Mes seleccionado: ");
+					scanf("%i", &mes3);
+				}
+				else if(opcion4==2)
+				{
+					printf("Escriba el numero del mes del 2022 que desee:\n\n");
+					printf("Mes seleccionado: ");
+					scanf("%i", &mes4);
+				}
 			}
 		}
 		else if(opcion3==3)
@@ -279,6 +279,12 @@ int main()
 	
 	
 	return 0;
+}
+
+float energia_media_2021(int mes)
+{
+	
+	
 }
 
 void buscarPorTipo(FILE *pf, int opcion5)
