@@ -15,6 +15,9 @@ float rango_energia_2022(int mes);
 
 void buscarPorTipo(FILE *pf, int opcion5);
 
+void busqueda_mensual1(int mes);
+void busqueda_mensual2(int mes2);
+
 int main()
 {
 	system("cls");
@@ -215,24 +218,41 @@ int main()
 		{
 			while(opcion4!=1 && opcion4!=2)
 			{
-				fflush(stdin);
-				system("cls");
-				printf("Seleccione el anho del que quiere ver los datos:\n\n");
-				printf("1. 2021\n2. 2022\n\n");
-				printf("Opcion a elegir: ");
-				scanf("%i", &opcion4);
-				if(opcion4==1)
-				{
-					printf("Escriba el numero del mes del 2021 que desee:\n\n");
-					printf("Mes seleccionado: ");
-					scanf("%i", &mes3);
-				}
-				else if(opcion4==2)
-				{
-					printf("Escriba el numero del mes del 2022 que desee:\n\n");
-					printf("Mes seleccionado: ");
-					scanf("%i", &mes4);
-				}
+				fflush(stdin); 
+				int anho, opcion6, opcion7;
+	            FILE *pdatos1;
+	            fopen("generacion_por_tecnologias_21_22_puntos_simplificado_solo_energias_2021.csv", "r");
+	            FILE *pdatos2;
+	            fopen("generacion_por_tecnologias_21_22_puntos_simplificado_solo_energias_2022.csv", "r");
+		        printf("Seleccione el anho que le interesa:\n 1. 2021 \n 2. 2022 \n");
+		        scanf("%i", &anho);
+		        if	(anho==1)
+		         {
+		           FILE *pdatos;
+	               fopen("generacion_por_tecnologias_21_22_puntos_simplificado_solo_energias_2021.csv", "r");
+	               printf("Seleccione el mes del anho 2021 del cual quiere ver los datos: \n"); 
+                   printf(" 1. Enero\n 2. Febrero\n 3. Marzo \n 4. Abril\n 5. Mayo\n 6. Junio\n");
+                   printf(" 7. Julio\n 8.Agosto\n 9. Septiembre\n 10. Octubre\n 11. Noviembre\n 12. Diciembre\n\n");
+                   printf("Opcion a escoger: ");
+                   scanf("%i", &opcion6);
+                   busqueda_mensual1(opcion6);
+		         }
+		        else if	(anho==2)
+		         {
+	               FILE *pdatos2;
+	               fopen("generacion_por_tecnologias_21_22_puntos_simplificado_solo_energias_2022.csv", "r");
+	               printf("Seleccione el mes del anho 2022 del cual quiere ver los datos: \n"); 
+                   printf(" 1. Enero\n 2. Febrero\n 3. Marzo \n 4. Abril\n 5. Mayo\n 6. Junio\n");
+                   printf(" 7. Julio\n 8.Agosto\n 9. Septiembre\n 10. Octubre\n 11. Noviembre\n 12. Diciembre\n\n");
+                   printf("Opcion a escoger: ");
+                   scanf("%i", &opcion7);
+                   busqueda_mensual2(opcion7);
+		         } 
+		        else if ( anho!=1 && anho!=2)
+		         {
+		 	       printf("Ha habido un error. Vuelva a intentarlo con una de las opciones definidas.\n");
+		         }
+				
 			}
 		}
 		else if(opcion3==3)
@@ -1223,5 +1243,154 @@ void buscarPorTipo(FILE *pf, int opcion5)
     if(opcion5!=1 && opcion5!=2)
     {
     	printf("Error, ejecuta de nuevo el programa.");
+	}
+}
+
+void busqueda_mensual1(int mes)
+{
+	FILE *pdatos;
+	float enero_2021[17],febrero_2021[17],marzo_2021[17],abril_2021[17],mayo_2021[17],junio_2021[17];
+	float julio_2021[17],agosto_2021[17],septiembre_2021[17],octubre_2021[17],noviembre_2021[17],diciembre_2021[17];
+	int i;
+	
+	pdatos = fopen("generacion_por_tecnologias_21_22_puntos_simplificado_solo_energias_2021.csv", "r");
+	if (pdatos == NULL)
+  	{
+    printf("ERROR AL ABRIR EL FICHERO DE LECTURA");
+  	}
+	else
+	{
+		for(i=0;i<17;i++)
+		{
+			fscanf(pdatos, "%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f", &enero_2021[i],&febrero_2021[i],&marzo_2021[i],&abril_2021[i],&mayo_2021[i],&junio_2021[i],&julio_2021[i],&agosto_2021[i],&septiembre_2021[i],&octubre_2021[i],&noviembre_2021[i],&diciembre_2021[i]);
+		}
+		fclose(pdatos); 
+		switch(mes)
+		{
+			case 1:
+			printf(" HIDRAULICA: %f\n TURBINA DE BOMBEO: %f\n NUCLEAR: %f\n CARBON: %f\n MOTORES DIESEL: %f\n TURBINA DE GAS: %f\n TURBINA DE VAPOR: %f\n CICLO COMBINADO: %f\n HIDROELECTRICA: %f\n EOLICA: %f\n SOL. FOTOVOLTAICA: %f\n SOL. TERMICA: %f\n OTRAS RENOVABLES: %f\n COGENERACION: %f\n RESIDUOS NO RENOVABLES: %f\n RESIDUOS RENOVABLES: %f\n ",
+			enero_2021[0],enero_2021[1],enero_2021[2],enero_2021[3],enero_2021[4],enero_2021[5],enero_2021[6],enero_2021[7],enero_2021[8],enero_2021[9], enero_2021[10],enero_2021[11],enero_2021[12],enero_2021[13],enero_2021[14],enero_2021[15],enero_2021[16]); 
+				break;
+			case 2:
+	     	printf(" HIDRAULICA: %f\n TURBINA DE BOMBEO: %f\n NUCLEAR: %f\n CARBON: %f\n MOTORES DIESEL: %f\n TURBINA DE GAS: %f\n TURBINA DE VAPOR: %f\n CICLO COMBINADO: %f\n HIDROELECTRICA: %f\n EOLICA: %f\n SOL. FOTOVOLTAICA: %f\n SOL. TERMICA: %f\n OTRAS RENOVABLES: %f\n COGENERACION: %f\n RESIDUOS NO RENOVABLES: %f\n RESIDUOS RENOVABLES: %f\n ",
+		    febrero_2021[0], febrero_2021[1],febrero_2021[2],febrero_2021[3],febrero_2021[4],febrero_2021[5],febrero_2021[6],febrero_2021[7],febrero_2021[8],febrero_2021[9],febrero_2021[10],febrero_2021[11],febrero_2021[12],febrero_2021[13],febrero_2021[14],febrero_2021[15],febrero_2021[16]);
+				break;
+			case 3:
+			printf(" HIDRAULICA: %f\n TURBINA DE BOMBEO: %f\n NUCLEAR: %f\n CARBON: %f\n MOTORES DIESEL: %f\n TURBINA DE GAS: %f\n TURBINA DE VAPOR: %f\n CICLO COMBINADO: %f\n HIDROELECTRICA: %f\n EOLICA: %f\n SOL. FOTOVOLTAICA: %f\n SOL. TERMICA: %f\n OTRAS RENOVABLES: %f\n COGENERACION: %f\n RESIDUOS NO RENOVABLES: %f\n RESIDUOS RENOVABLES: %f\n ",
+			marzo_2021[0],marzo_2021[1],marzo_2021[2],marzo_2021[3],marzo_2021[4],marzo_2021[5],marzo_2021[6],marzo_2021[7],marzo_2021[8],marzo_2021[9],marzo_2021[10],marzo_2021[11],marzo_2021[12],marzo_2021[13],marzo_2021[14],marzo_2021[15],marzo_2021[16]);
+				break;
+			case 4:
+			printf(" HIDRAULICA: %f\n TURBINA DE BOMBEO: %f\n NUCLEAR: %f\n CARBON: %f\n MOTORES DIESEL: %f\n TURBINA DE GAS: %f\n TURBINA DE VAPOR: %f\n CICLO COMBINADO: %f\n HIDROELECTRICA: %f\n EOLICA: %f\n SOL. FOTOVOLTAICA: %f\n SOL. TERMICA: %f\n OTRAS RENOVABLES: %f\n COGENERACION: %f\n RESIDUOS NO RENOVABLES: %f\n RESIDUOS RENOVABLES: %f\n ",
+			abril_2021[0],abril_2021[1],abril_2021[2],abril_2021[3],abril_2021[4],abril_2021[5],abril_2021[6],abril_2021[7],abril_2021[8],abril_2021[9],abril_2021[10],abril_2021[11],abril_2021[12],abril_2021[13],abril_2021[14],abril_2021[15],abril_2021[16]);
+				break;
+			case 5:
+			printf(" HIDRAULICA: %f\n TURBINA DE BOMBEO: %f\n NUCLEAR: %f\n CARBON: %f\n MOTORES DIESEL: %f\n TURBINA DE GAS: %f\n TURBINA DE VAPOR: %f\n CICLO COMBINADO: %f\n HIDROELECTRICA: %f\n EOLICA: %f\n SOL. FOTOVOLTAICA: %f\n SOL. TERMICA: %f\n OTRAS RENOVABLES: %f\n COGENERACION: %f\n RESIDUOS NO RENOVABLES: %f\n RESIDUOS RENOVABLES: %f\n ",
+			mayo_2021[0],mayo_2021[1],mayo_2021[2],mayo_2021[3],mayo_2021[4],mayo_2021[5],mayo_2021[6],mayo_2021[7],mayo_2021[8],mayo_2021[9],mayo_2021[10],mayo_2021[11],mayo_2021[12],mayo_2021[13],mayo_2021[14],mayo_2021[15],mayo_2021[16]);
+				break;
+			case 6:
+			printf(" HIDRAULICA: %f\n TURBINA DE BOMBEO: %f\n NUCLEAR: %f\n CARBON: %f\n MOTORES DIESEL: %f\n TURBINA DE GAS: %f\n TURBINA DE VAPOR: %f\n CICLO COMBINADO: %f\n HIDROELECTRICA: %f\n EOLICA: %f\n SOL. FOTOVOLTAICA: %f\n SOL. TERMICA: %f\n OTRAS RENOVABLES: %f\n COGENERACION: %f\n RESIDUOS NO RENOVABLES: %f\n RESIDUOS RENOVABLES: %f\n ",
+			junio_2021[0],junio_2021[1],junio_2021[2],junio_2021[3],junio_2021[4],junio_2021[5],junio_2021[6],junio_2021[7],junio_2021[8],junio_2021[9],junio_2021[10],junio_2021[11],junio_2021[12],junio_2021[13],junio_2021[14],junio_2021[15],junio_2021[16]);
+				break;
+			case 7:
+			printf(" HIDRAULICA: %f\n TURBINA DE BOMBEO: %f\n NUCLEAR: %f\n CARBON: %f\n MOTORES DIESEL: %f\n TURBINA DE GAS: %f\n TURBINA DE VAPOR: %f\n CICLO COMBINADO: %f\n HIDROELECTRICA: %f\n EOLICA: %f\n SOL. FOTOVOLTAICA: %f\n SOL. TERMICA: %f\n OTRAS RENOVABLES: %f\n COGENERACION: %f\n RESIDUOS NO RENOVABLES: %f\n RESIDUOS RENOVABLES: %f\n ",
+			julio_2021[0],julio_2021[1],julio_2021[2],julio_2021[3],julio_2021[4],julio_2021[5],julio_2021[6],julio_2021[7],julio_2021[8],julio_2021[9],julio_2021[10],julio_2021[11],julio_2021[12],julio_2021[13],julio_2021[14],julio_2021[15],julio_2021[16]);
+				break;
+			case 8:
+			printf(" HIDRAULICA: %f\n TURBINA DE BOMBEO: %f\n NUCLEAR: %f\n CARBON: %f\n MOTORES DIESEL: %f\n TURBINA DE GAS: %f\n TURBINA DE VAPOR: %f\n CICLO COMBINADO: %f\n HIDROELECTRICA: %f\n EOLICA: %f\n SOL. FOTOVOLTAICA: %f\n SOL. TERMICA: %f\n OTRAS RENOVABLES: %f\n COGENERACION: %f\n RESIDUOS NO RENOVABLES: %f\n RESIDUOS RENOVABLES: %f\n ",
+			agosto_2021[0],agosto_2021[1],agosto_2021[2],agosto_2021[3],agosto_2021[4],agosto_2021[5],agosto_2021[6],agosto_2021[7],agosto_2021[8],agosto_2021[9],agosto_2021[10],agosto_2021[11],agosto_2021[12],agosto_2021[13],agosto_2021[14],agosto_2021[15],agosto_2021[16]); 
+				break;
+			case 9:
+			printf(" HIDRAULICA: %f\n TURBINA DE BOMBEO: %f\n NUCLEAR: %f\n CARBON: %f\n MOTORES DIESEL: %f\n TURBINA DE GAS: %f\n TURBINA DE VAPOR: %f\n CICLO COMBINADO: %f\n HIDROELECTRICA: %f\n EOLICA: %f\n SOL. FOTOVOLTAICA: %f\n SOL. TERMICA: %f\n OTRAS RENOVABLES: %f\n COGENERACION: %f\n RESIDUOS NO RENOVABLES: %f\n RESIDUOS RENOVABLES: %f\n ",
+			septiembre_2021[0],septiembre_2021[1],septiembre_2021[2],septiembre_2021[3],septiembre_2021[4],septiembre_2021[5],septiembre_2021[6],septiembre_2021[7],septiembre_2021[8],septiembre_2021[9],septiembre_2021[10],septiembre_2021[11],septiembre_2021[12],septiembre_2021[13],septiembre_2021[14],septiembre_2021[15],septiembre_2021[16]);
+				break;
+			case 10:
+			printf(" HIDRAULICA: %f\n TURBINA DE BOMBEO: %f\n NUCLEAR: %f\n CARBON: %f\n MOTORES DIESEL: %f\n TURBINA DE GAS: %f\n TURBINA DE VAPOR: %f\n CICLO COMBINADO: %f\n HIDROELECTRICA: %f\n EOLICA: %f\n SOL. FOTOVOLTAICA: %f\n SOL. TERMICA: %f\n OTRAS RENOVABLES: %f\n COGENERACION: %f\n RESIDUOS NO RENOVABLES: %f\n RESIDUOS RENOVABLES: %f\n ",
+			octubre_2021[0],octubre_2021[1],octubre_2021[2],octubre_2021[3],octubre_2021[4],octubre_2021[5],octubre_2021[6],octubre_2021[7],octubre_2021[8],octubre_2021[9],octubre_2021[10],octubre_2021[11],octubre_2021[12],octubre_2021[13],octubre_2021[14],octubre_2021[15],octubre_2021[16]);
+				break;
+			case 11:
+		    printf(" HIDRAULICA: %f\n TURBINA DE BOMBEO: %f\n NUCLEAR: %f\n CARBON: %f\n MOTORES DIESEL: %f\n TURBINA DE GAS: %f\n TURBINA DE VAPOR: %f\n CICLO COMBINADO: %f\n HIDROELECTRICA: %f\n EOLICA: %f\n SOL. FOTOVOLTAICA: %f\n SOL. TERMICA: %f\n OTRAS RENOVABLES: %f\n COGENERACION: %f\n RESIDUOS NO RENOVABLES: %f\n RESIDUOS RENOVABLES: %f\n ",
+		    noviembre_2021[0],noviembre_2021[1],noviembre_2021[2],noviembre_2021[3],noviembre_2021[4],noviembre_2021[5],noviembre_2021[6],noviembre_2021[7],noviembre_2021[8],noviembre_2021[9],noviembre_2021[10],noviembre_2021[11],noviembre_2021[12],noviembre_2021[13],noviembre_2021[14],noviembre_2021[15],noviembre_2021[16]);
+				break;
+			case 12:
+			printf(" HIDRAULICA: %f\n TURBINA DE BOMBEO: %f\n NUCLEAR: %f\n CARBON: %f\n MOTORES DIESEL: %f\n TURBINA DE GAS: %f\n TURBINA DE VAPOR: %f\n CICLO COMBINADO: %f\n HIDROELECTRICA: %f\n EOLICA: %f\n SOL. FOTOVOLTAICA: %f\n SOL. TERMICA: %f\n OTRAS RENOVABLES: %f\n COGENERACION: %f\n RESIDUOS NO RENOVABLES: %f\n RESIDUOS RENOVABLES: %f\n ",
+			diciembre_2021[0],diciembre_2021[1],diciembre_2021[2],diciembre_2021[3],diciembre_2021[4],diciembre_2021[5],diciembre_2021[6],diciembre_2021[7],diciembre_2021[8],diciembre_2021[9],diciembre_2021[10],diciembre_2021[11],diciembre_2021[12],diciembre_2021[13],diciembre_2021[14],diciembre_2021[15],diciembre_2021[16]);
+				break;
+			
+		}
+	}
+
+}
+ 
+
+void busqueda_mensual2(int mes2)
+{
+	FILE *pdatos2;
+	float enero_2022[17],febrero_2022[17],marzo_2022[17],abril_2022[17],mayo_2022[17],junio_2022[17];
+	float julio_2022[17],agosto_2022[17],septiembre_2022[17],octubre_2022[17],noviembre_2022[17],diciembre_2022[17];
+	int i;
+	pdatos2 = fopen("generacion_por_tecnologias_21_22_puntos_simplificado_solo_energias_2022.csv", "r");
+	if (pdatos2 == NULL)
+  	{
+    printf("ERROR AL ABRIR EL FICHERO DE LECTURA");
+  	}
+	else
+	{
+		for(i=0;i<17;i++)
+		{
+			fscanf(pdatos2, "%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f", &enero_2022[i],&febrero_2022[i],&marzo_2022[i],&abril_2022[i],&mayo_2022[i],&junio_2022[i],&julio_2022[i],&agosto_2022[i],&septiembre_2022[i],&octubre_2022[i],&noviembre_2022[i],&diciembre_2022[i]);
+		}
+		fclose(pdatos2); 
+		switch(mes2)
+		{
+			case 1:
+			printf(" HIDRAULICA: %f\n TURBINA DE BOMBEO: %f\n NUCLEAR: %f\n CARBON: %f\n MOTORES DIESEL: %f\n TURBINA DE GAS: %f\n TURBINA DE VAPOR: %f\n CICLO COMBINADO: %f\n HIDROELECTRICA: %f\n EOLICA: %f\n SOL. FOTOVOLTAICA: %f\n SOL. TERMICA: %f\n OTRAS RENOVABLES: %f\n COGENERACION: %f\n RESIDUOS NO RENOVABLES: %f\n RESIDUOS RENOVABLES: %f\n ",
+			enero_2022[0],enero_2022[1],enero_2022[2],enero_2022[3],enero_2022[4],enero_2022[5],enero_2022[6],enero_2022[7],enero_2022[8],enero_2022[9], enero_2022[10],enero_2022[11],enero_2022[12],enero_2022[13],enero_2022[14],enero_2022[15],enero_2022[16]); 
+				break;
+			case 2:
+	     	printf(" HIDRAULICA: %f\n TURBINA DE BOMBEO: %f\n NUCLEAR: %f\n CARBON: %f\n MOTORES DIESEL: %f\n TURBINA DE GAS: %f\n TURBINA DE VAPOR: %f\n CICLO COMBINADO: %f\n HIDROELECTRICA: %f\n EOLICA: %f\n SOL. FOTOVOLTAICA: %f\n SOL. TERMICA: %f\n OTRAS RENOVABLES: %f\n COGENERACION: %f\n RESIDUOS NO RENOVABLES: %f\n RESIDUOS RENOVABLES: %f\n ",
+		    febrero_2022[0], febrero_2022[1],febrero_2022[2],febrero_2022[3],febrero_2022[4],febrero_2022[5],febrero_2022[6],febrero_2022[7],febrero_2022[8],febrero_2022[9],febrero_2022[10],febrero_2022[11],febrero_2022[12],febrero_2022[13],febrero_2022[14],febrero_2022[15],febrero_2022[16]);
+				break;
+			case 3:
+			printf(" HIDRAULICA: %f\n TURBINA DE BOMBEO: %f\n NUCLEAR: %f\n CARBON: %f\n MOTORES DIESEL: %f\n TURBINA DE GAS: %f\n TURBINA DE VAPOR: %f\n CICLO COMBINADO: %f\n HIDROELECTRICA: %f\n EOLICA: %f\n SOL. FOTOVOLTAICA: %f\n SOL. TERMICA: %f\n OTRAS RENOVABLES: %f\n COGENERACION: %f\n RESIDUOS NO RENOVABLES: %f\n RESIDUOS RENOVABLES: %f\n ",
+			marzo_2022[0],marzo_2022[1],marzo_2022[2],marzo_2022[3],marzo_2022[4],marzo_2022[5],marzo_2022[6],marzo_2022[7],marzo_2022[8],marzo_2022[9],marzo_2022[10],marzo_2022[11],marzo_2022[12],marzo_2022[13],marzo_2022[14],marzo_2022[15],marzo_2022[16]);
+				break;
+			case 4:  
+			printf(" HIDRAULICA: %f\n TURBINA DE BOMBEO: %f\n NUCLEAR: %f\n CARBON: %f\n MOTORES DIESEL: %f\n TURBINA DE GAS: %f\n TURBINA DE VAPOR: %f\n CICLO COMBINADO: %f\n HIDROELECTRICA: %f\n EOLICA: %f\n SOL. FOTOVOLTAICA: %f\n SOL. TERMICA: %f\n OTRAS RENOVABLES: %f\n COGENERACION: %f\n RESIDUOS NO RENOVABLES: %f\n RESIDUOS RENOVABLES: %f\n ",
+			abril_2022[0],abril_2022[1],abril_2022[2],abril_2022[3],abril_2022[4],abril_2022[5],abril_2022[6],abril_2022[7],abril_2022[8],abril_2022[9],abril_2022[10],abril_2022[11],abril_2022[12],abril_2022[13],abril_2022[14],abril_2022[15],abril_2022[16]);
+				break;
+			case 5:
+			printf(" HIDRAULICA: %f\n TURBINA DE BOMBEO: %f\n NUCLEAR: %f\n CARBON: %f\n MOTORES DIESEL: %f\n TURBINA DE GAS: %f\n TURBINA DE VAPOR: %f\n CICLO COMBINADO: %f\n HIDROELECTRICA: %f\n EOLICA: %f\n SOL. FOTOVOLTAICA: %f\n SOL. TERMICA: %f\n OTRAS RENOVABLES: %f\n COGENERACION: %f\n RESIDUOS NO RENOVABLES: %f\n RESIDUOS RENOVABLES: %f\n ",
+			mayo_2022[0],mayo_2022[1],mayo_2022[2],mayo_2022[3],mayo_2022[4],mayo_2022[5],mayo_2022[6],mayo_2022[7],mayo_2022[8],mayo_2022[9],mayo_2022[10],mayo_2022[11],mayo_2022[12],mayo_2022[13],mayo_2022[14],mayo_2022[15],mayo_2022[16]);
+				break;
+			case 6:
+			printf(" HIDRAULICA: %f\n TURBINA DE BOMBEO: %f\n NUCLEAR: %f\n CARBON: %f\n MOTORES DIESEL: %f\n TURBINA DE GAS: %f\n TURBINA DE VAPOR: %f\n CICLO COMBINADO: %f\n HIDROELECTRICA: %f\n EOLICA: %f\n SOL. FOTOVOLTAICA: %f\n SOL. TERMICA: %f\n OTRAS RENOVABLES: %f\n COGENERACION: %f\n RESIDUOS NO RENOVABLES: %f\n RESIDUOS RENOVABLES: %f\n ",
+			junio_2022[0],junio_2022[1],junio_2022[2],junio_2022[3],junio_2022[4],junio_2022[5],junio_2022[6],junio_2022[7],junio_2022[8],junio_2022[9],junio_2022[10],junio_2022[11],junio_2022[12],junio_2022[13],junio_2022[14],junio_2022[15],junio_2022[16]);
+				break;
+			case 7:
+			printf(" HIDRAULICA: %f\n TURBINA DE BOMBEO: %f\n NUCLEAR: %f\n CARBON: %f\n MOTORES DIESEL: %f\n TURBINA DE GAS: %f\n TURBINA DE VAPOR: %f\n CICLO COMBINADO: %f\n HIDROELECTRICA: %f\n EOLICA: %f\n SOL. FOTOVOLTAICA: %f\n SOL. TERMICA: %f\n OTRAS RENOVABLES: %f\n COGENERACION: %f\n RESIDUOS NO RENOVABLES: %f\n RESIDUOS RENOVABLES: %f\n ",
+			julio_2022[0],julio_2022[1],julio_2022[2],julio_2022[3],julio_2022[4],julio_2022[5],julio_2022[6],julio_2022[7],julio_2022[8],julio_2022[9],julio_2022[10],julio_2022[11],julio_2022[12],julio_2022[13],julio_2022[14],julio_2022[15],julio_2022[16]);
+				break;
+			case 8:
+			printf(" HIDRAULICA: %f\n TURBINA DE BOMBEO: %f\n NUCLEAR: %f\n CARBON: %f\n MOTORES DIESEL: %f\n TURBINA DE GAS: %f\n TURBINA DE VAPOR: %f\n CICLO COMBINADO: %f\n HIDROELECTRICA: %f\n EOLICA: %f\n SOL. FOTOVOLTAICA: %f\n SOL. TERMICA: %f\n OTRAS RENOVABLES: %f\n COGENERACION: %f\n RESIDUOS NO RENOVABLES: %f\n RESIDUOS RENOVABLES: %f\n ",
+			agosto_2022[0],agosto_2022[1],agosto_2022[2],agosto_2022[3],agosto_2022[4],agosto_2022[5],agosto_2022[6],agosto_2022[7],agosto_2022[8],agosto_2022[9],agosto_2022[10],agosto_2022[11],agosto_2022[12],agosto_2022[13],agosto_2022[14],agosto_2022[15],agosto_2022[16]); 
+				break;
+			case 9:
+			printf(" HIDRAULICA: %f\n TURBINA DE BOMBEO: %f\n NUCLEAR: %f\n CARBON: %f\n MOTORES DIESEL: %f\n TURBINA DE GAS: %f\n TURBINA DE VAPOR: %f\n CICLO COMBINADO: %f\n HIDROELECTRICA: %f\n EOLICA: %f\n SOL. FOTOVOLTAICA: %f\n SOL. TERMICA: %f\n OTRAS RENOVABLES: %f\n COGENERACION: %f\n RESIDUOS NO RENOVABLES: %f\n RESIDUOS RENOVABLES: %f\n ",
+			septiembre_2022[0],septiembre_2022[1],septiembre_2022[2],septiembre_2022[3],septiembre_2022[4],septiembre_2022[5],septiembre_2022[6],septiembre_2022[7],septiembre_2022[8],septiembre_2022[9],septiembre_2022[10],septiembre_2022[11],septiembre_2022[12],septiembre_2022[13],septiembre_2022[14],septiembre_2022[15],septiembre_2022[16]);
+				break;
+			case 10:
+			printf(" HIDRAULICA: %f\n TURBINA DE BOMBEO: %f\n NUCLEAR: %f\n CARBON: %f\n MOTORES DIESEL: %f\n TURBINA DE GAS: %f\n TURBINA DE VAPOR: %f\n CICLO COMBINADO: %f\n HIDROELECTRICA: %f\n EOLICA: %f\n SOL. FOTOVOLTAICA: %f\n SOL. TERMICA: %f\n OTRAS RENOVABLES: %f\n COGENERACION: %f\n RESIDUOS NO RENOVABLES: %f\n RESIDUOS RENOVABLES: %f\n ",
+			octubre_2022[0],octubre_2022[1],octubre_2022[2],octubre_2022[3],octubre_2022[4],octubre_2022[5],octubre_2022[6],octubre_2022[7],octubre_2022[8],octubre_2022[9],octubre_2022[10],octubre_2022[11],octubre_2022[12],octubre_2022[13],octubre_2022[14],octubre_2022[15],octubre_2022[16]);
+				break;
+			case 11:
+		    printf(" HIDRAULICA: %f\n TURBINA DE BOMBEO: %f\n NUCLEAR: %f\n CARBON: %f\n MOTORES DIESEL: %f\n TURBINA DE GAS: %f\n TURBINA DE VAPOR: %f\n CICLO COMBINADO: %f\n HIDROELECTRICA: %f\n EOLICA: %f\n SOL. FOTOVOLTAICA: %f\n SOL. TERMICA: %f\n OTRAS RENOVABLES: %f\n COGENERACION: %f\n RESIDUOS NO RENOVABLES: %f\n RESIDUOS RENOVABLES: %f\n ",
+		    noviembre_2022[0],noviembre_2022[1],noviembre_2022[2],noviembre_2022[3],noviembre_2022[4],noviembre_2022[5],noviembre_2022[6],noviembre_2022[7],noviembre_2022[8],noviembre_2022[9],noviembre_2022[10],noviembre_2022[11],noviembre_2022[12],noviembre_2022[13],noviembre_2022[14],noviembre_2022[15],noviembre_2022[16]);
+				break;
+			case 12:
+			printf(" HIDRAULICA: %f\n TURBINA DE BOMBEO: %f\n NUCLEAR: %f\n CARBON: %f\n MOTORES DIESEL: %f\n TURBINA DE GAS: %f\n TURBINA DE VAPOR: %f\n CICLO COMBINADO: %f\n HIDROELECTRICA: %f\n EOLICA: %f\n SOL. FOTOVOLTAICA: %f\n SOL. TERMICA: %f\n OTRAS RENOVABLES: %f\n COGENERACION: %f\n RESIDUOS NO RENOVABLES: %f\n RESIDUOS RENOVABLES: %f\n ",
+			diciembre_2022[0],diciembre_2022[1],diciembre_2022[2],diciembre_2022[3],diciembre_2022[4],diciembre_2022[5],diciembre_2022[6],diciembre_2022[7],diciembre_2022[8],diciembre_2022[9],diciembre_2022[10],diciembre_2022[11],diciembre_2022[12],diciembre_2022[13],diciembre_2022[14],diciembre_2022[15],diciembre_2022[16]);
+				break;
+			
+		}
 	}
 }
