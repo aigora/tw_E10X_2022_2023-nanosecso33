@@ -81,13 +81,17 @@ int main()
 		{
 			printf("Fichero abierto correctamente.\n\n");
 		}
-		printf("MENU PARA LA APERTURA DE DATOS\n\nIndique la opcion que desea seleccionar:\n\n");
-		printf("1. Realizar un calculo con los datos deseados.\n");
-		printf("2. Mostrar los datos mensuales para analizarlos.\n");
-		printf("3. Clasificar las secciones en energia renovable y no renovable.\n");
-		printf("4. Salir.\n\n");
-		printf("Opcion a elegir: ");
-		scanf("%i", &opcion3);
+		while(opcion3<1 || opcion3>4)
+		{
+			fflush(stdin);
+			printf("MENU PARA LA APERTURA DE DATOS\n\nIndique la opcion que desea seleccionar:\n\n");
+			printf("1. Realizar un calculo con los datos deseados.\n");
+			printf("2. Mostrar los datos mensuales para analizarlos.\n");
+			printf("3. Clasificar las secciones en energia renovable y no renovable.\n");
+			printf("4. Salir.\n\n");
+			printf("Opcion a elegir: ");
+			scanf("%i", &opcion3);
+		}
 		if(opcion3==1)
 		{
 			while(opcion4!=1 && opcion4!=2)
@@ -110,15 +114,19 @@ int main()
 						scanf("%i", &mes1);
 						if(mes1>0 && mes1<13)
 						{
-							system("cls");
-							printf("Ha seleccionado el mes %i.\nEscoja que operacion desea realizar:\n\n", mes1);
-							printf("1. Energia media generada\n");
-							printf("2. Suma de las energias (energia total)\n");
-							printf("3. Energia maxima\n");
-							printf("4. Energia minima\n");
-							printf("5. Rango de los datos\n\n");
-							printf("Opcion a elegir: ");
-							scanf("%i", &tipo_calculo);
+							while(tipo_calculo<1 || tipo_calculo>5)
+							{
+								fflush(stdin);
+								system("cls");
+								printf("Ha seleccionado el mes %i.\nEscoja que operacion desea realizar:\n\n", mes1);
+								printf("1. Energia media generada\n");
+								printf("2. Suma de las energias (energia total)\n");
+								printf("3. Energia maxima\n");
+								printf("4. Energia minima\n");
+								printf("5. Rango de los datos\n\n");
+								printf("Opcion a elegir: ");
+								scanf("%i", &tipo_calculo);
+							}
 					 		if(tipo_calculo==1)
 							{
 								float media= energia_media_2021(mes1);
@@ -159,39 +167,43 @@ int main()
 						scanf("%i", &mes2);
 						if(mes2>0 && mes2<13)
 						{
-							system("cls");
-							printf("Ha seleccionado el mes %i.\nEscoja que operacion desea realizar:\n\n", mes2);
-							printf("1. Energia media generada\n");
-							printf("2. Suma de las energias (energia total)\n");
-							printf("3. Energia maxima\n");
-							printf("4. Energia minima\n");
-							printf("5. Rango de los datos\n\n");
-							printf("Opcion a elegir: ");
-							scanf("%i", &tipo_calculo2);
+							while(tipo_calculo2<1 || tipo_calculo2>5)
+							{
+								fflush(stdin);
+								system("cls");
+								printf("Ha seleccionado el mes %i.\nEscoja que operacion desea realizar:\n\n", mes2);
+								printf("1. Energia media generada\n");
+								printf("2. Suma de las energias (energia total)\n");
+								printf("3. Energia maxima\n");
+								printf("4. Energia minima\n");
+								printf("5. Rango de los datos\n\n");
+								printf("Opcion a elegir: ");
+								scanf("%i", &tipo_calculo2);
+							}
 					 		if(tipo_calculo2==1)
 							{
-								//float media2= energia_media_2022(mes2);
-								//printf("\nLa energia media en el mes %i es %f Gwh.", mes2, media2);
+								float media2= energia_media_2022(mes2);
+								printf("\nLa energia media en el mes %i es %f Gwh.", mes2, media2);
 							}
 							if(tipo_calculo2==2)
 							{
-								//float total2= energia_total_2022(mes2);
-								//printf("\nLa enegia total generada en el mes %i es %f Gwh.", mes2, total2);
+								float total2= energia_total_2022(mes2);
+								printf("\nLa enegia total generada en el mes %i es %f Gwh.", mes2, total2);
 							}
 							if(tipo_calculo2==3)
 							{
-								//float maximo2 = energia_max_2022(mes2);
-								//printf("\nLa enegia maxima generada en el mes %i es %f Gwh.", mes2, maximo2);
+								float maximo2 = energia_max_2022(mes2);
+								printf("\nLa enegia maxima generada en el mes %i es %f Gwh.", mes2, maximo2);
 							}
 							if(tipo_calculo2==4)
 							{
-								//float minimo2 = energia_min_2022(mes2);
-								//printf("\nLa enegia minima generada en el mes %i es %f Gwh.", mes2, minimo2);
+								float minimo2 = energia_min_2022(mes2);
+								printf("\nLa enegia minima generada en el mes %i es %f Gwh.", mes2, minimo2);
 							}
 							if(tipo_calculo2==5)
 							{
-								//float rango2 = rango_energia_2022(mes2);
-								//printf("\nEl rango de la energia en el mes %i es %f Gwh.", mes2, rango2);
+								float rango2 = rango_energia_2022(mes2);
+								printf("\nEl rango de la energia en el mes %i es %f Gwh.", mes2, rango2);
 							}
 						}
 					}	
@@ -411,7 +423,7 @@ float energia_max_2021(int mes)
 		float max_energia_noviembre = noviembre_2021[0];
 		float max_energia_diciembre = diciembre_2021[0];
 		
-		for(i=0;i<21;i++)
+		for(i=0;i<21;i++) //el bucle se hace hasta 21 porque la ultima posicion del vector es la energia total que no tenemos en cuenta para buscar el maximo
 		{
 			if(enero_2021[i] > max_energia_enero)
 			{
@@ -541,7 +553,7 @@ float energia_min_2021(int mes)
 		float min_energia_noviembre = noviembre_2021[0];
 		float min_energia_diciembre = diciembre_2021[0];
 		
-		for(i=0;i<21;i++)
+		for(i=0;i<21;i++) //el bucle se hace hasta 21 porque la ultima posicion del vector es la energia total que no tenemos en cuenta para buscar el minimo
 		{
 			if(enero_2021[i] < min_energia_enero)
 			{
@@ -678,6 +690,438 @@ float rango_energia_2021(int mes)
 				break;
 			case 12:
 				rango = energia_max_2021(12)-energia_min_2021(12); 
+				break;
+		}
+	return rango;
+}
+
+
+float energia_media_2022(int mes)
+{
+	FILE *plectura;
+	float enero_2022[22],febrero_2022[22],marzo_2022[22],abril_2022[22],mayo_2022[22],junio_2022[22];
+	float julio_2022[22],agosto_2022[22],septiembre_2022[22],octubre_2022[22],noviembre_2022[22],diciembre_2022[22];
+	float media2;
+	int i;
+	plectura = fopen("generacion_por_tecnologias_21_22_puntos_simplificado_solo_energias_2022.csv", "r");
+	if (plectura == NULL)
+  	{
+    printf("ERROR AL ABRIR EL FICHERO DE LECTURA");
+  	}
+	else
+	{
+		for(i=0;i<22;i++)
+		{
+			fscanf(plectura, "%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f", &enero_2022[i],&febrero_2022[i],&marzo_2022[i],&abril_2022[i],&mayo_2022[i],&junio_2022[i],&julio_2022[i],&agosto_2022[i],&septiembre_2022[i],&octubre_2022[i],&noviembre_2022[i],&diciembre_2022[i]);
+		}
+		fclose(plectura);
+		
+		switch(mes)
+		{
+			case 1:
+				media2 = enero_2022[21]/21.0; //dividimos entre 21 porque es el numero total de energias que tenemos
+				break;
+			case 2:
+				media2 = febrero_2022[21]/21.0; 
+				break;
+			case 3:
+				media2 = marzo_2022[21]/21.0; 
+				break;
+			case 4:
+				media2 = abril_2022[21]/21.0; 
+				break;
+			case 5:
+				media2 = mayo_2022[21]/21.0; 
+				break;
+			case 6:
+				media2 = junio_2022[21]/21.0; 
+				break;
+			case 7:
+				media2 = julio_2022[21]/21.0; 
+				break;
+			case 8:
+				media2 = agosto_2022[21]/21.0; 
+				break;
+			case 9:
+				media2 = septiembre_2022[21]/21.0;
+				break;
+			case 10:
+				media2 = octubre_2022[21]/21.0;
+				break;
+			case 11:
+				media2 = noviembre_2022[21]/21.0;
+				break;
+			case 12:
+				media2 = diciembre_2022[21]/21.0; 
+				break;
+			
+		}
+	}
+	return media2;
+}
+
+float energia_total_2022(int mes)
+{
+	FILE *plectura;
+	float enero_2022[22],febrero_2022[22],marzo_2022[22],abril_2022[22],mayo_2022[22],junio_2022[22];
+	float julio_2022[22],agosto_2022[22],septiembre_2022[22],octubre_2022[22],noviembre_2022[22],diciembre_2022[22];
+	float total;
+	int i;
+	plectura = fopen("generacion_por_tecnologias_21_22_puntos_simplificado_solo_energias_2022.csv", "r");
+	if (plectura == NULL)
+  	{
+    printf("ERROR AL ABRIR EL FICHERO DE LECTURA");
+  	}
+	else
+	{
+		for(i=0;i<22;i++)
+		{
+			fscanf(plectura, "%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f", &enero_2022[i],&febrero_2022[i],&marzo_2022[i],&abril_2022[i],&mayo_2022[i],&junio_2022[i],&julio_2022[i],&agosto_2022[i],&septiembre_2022[i],&octubre_2022[i],&noviembre_2022[i],&diciembre_2022[i]);
+		}
+		fclose(plectura);
+		
+		switch(mes)
+		{
+			case 1:
+				total = enero_2022[21]; //en vez de sumar todas las energias, tenemos que la energia total es el ultimo dato del vector
+				break;
+			case 2:
+				total = febrero_2022[21]; 
+				break;
+			case 3:
+				total = marzo_2022[21]; 
+				break;
+			case 4:
+				total = abril_2022[21]; 
+				break;
+			case 5:
+				total = mayo_2022[21]; 
+				break;
+			case 6:
+				total = junio_2022[21]; 
+				break;
+			case 7:
+				total = julio_2022[21]; 
+				break;
+			case 8:
+				total = agosto_2022[21]; 
+				break;
+			case 9:
+				total = septiembre_2022[21];
+				break;
+			case 10:
+				total = octubre_2022[21];
+				break;
+			case 11:
+				total = noviembre_2022[21];
+				break;
+			case 12:
+				total = diciembre_2022[21]; 
+				break;
+			
+		}
+	}
+	return total;
+}
+
+float energia_max_2022(int mes)
+{
+	FILE *plectura;
+	float enero_2022[22],febrero_2022[22],marzo_2022[22],abril_2022[22],mayo_2022[22],junio_2022[22];
+	float julio_2022[22],agosto_2022[22],septiembre_2022[22],octubre_2022[22],noviembre_2022[22],diciembre_2022[22];
+	float maximo;
+	int i;
+	plectura = fopen("generacion_por_tecnologias_21_22_puntos_simplificado_solo_energias_2022.csv", "r");
+	if (plectura == NULL)
+  	{
+    printf("ERROR AL ABRIR EL FICHERO DE LECTURA");
+  	}
+	else
+	{
+		for(i=0;i<22;i++)
+		{
+			fscanf(plectura, "%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f", &enero_2022[i],&febrero_2022[i],&marzo_2022[i],&abril_2022[i],&mayo_2022[i],&junio_2022[i],&julio_2022[i],&agosto_2022[i],&septiembre_2022[i],&octubre_2022[i],&noviembre_2022[i],&diciembre_2022[i]);
+		}
+		fclose(plectura);
+		
+		float max_energia_enero = enero_2022[0];
+		float max_energia_febrero = febrero_2022[0];
+		float max_energia_marzo = marzo_2022[0];
+		float max_energia_abril = abril_2022[0];
+		float max_energia_mayo = mayo_2022[0];
+		float max_energia_junio = junio_2022[0];
+		float max_energia_julio = julio_2022[0];
+		float max_energia_agosto = agosto_2022[0];
+		float max_energia_septiembre = septiembre_2022[0];
+		float max_energia_octubre = octubre_2022[0];
+		float max_energia_noviembre = noviembre_2022[0];
+		float max_energia_diciembre = diciembre_2022[0];
+		
+		for(i=0;i<21;i++) //el bucle se hace hasta 21 porque la ultima posicion del vector es la energia total que no tenemos en cuenta para buscar el maximo
+		{
+			if(enero_2022[i] > max_energia_enero)
+			{
+				max_energia_enero = enero_2022[i];
+			}
+			if(febrero_2022[i] > max_energia_febrero)
+			{
+				max_energia_febrero = febrero_2022[i];
+			}
+			if(marzo_2022[i] > max_energia_marzo)
+			{
+				max_energia_marzo = marzo_2022[i];
+			}
+			if(abril_2022[i] > max_energia_abril)
+			{
+				max_energia_abril = abril_2022[i];
+			}
+			if(mayo_2022[i] > max_energia_mayo)
+			{
+				max_energia_mayo = mayo_2022[i];
+			}
+			if(junio_2022[i] > max_energia_junio)
+			{
+				max_energia_junio = junio_2022[i];
+			}
+			if(julio_2022[i] > max_energia_julio)
+			{
+				max_energia_julio = julio_2022[i];
+			}
+			if(agosto_2022[i] > max_energia_agosto)
+			{
+				max_energia_agosto = agosto_2022[i];
+			}
+			if(septiembre_2022[i] > max_energia_septiembre)
+			{
+				max_energia_septiembre = septiembre_2022[i];
+			}
+			if(octubre_2022[i] > max_energia_octubre)
+			{
+				max_energia_octubre = octubre_2022[i];
+			}
+			if(noviembre_2022[i] > max_energia_noviembre)
+			{
+				max_energia_noviembre = noviembre_2022[i];
+			}
+			if(diciembre_2022[i] > max_energia_diciembre)
+			{
+				max_energia_diciembre = diciembre_2022[i];
+			}
+			
+		}
+		
+		switch(mes)
+		{
+			case 1:
+				maximo = max_energia_enero; 
+				break;
+			case 2:
+				maximo = max_energia_febrero; 
+				break;
+			case 3:
+				maximo = max_energia_marzo; 
+				break;
+			case 4:
+				maximo = max_energia_abril; 
+				break;
+			case 5:
+				maximo = max_energia_mayo; 
+				break;
+			case 6:
+				maximo = max_energia_junio; 
+				break;
+			case 7:
+				maximo = max_energia_julio; 
+				break;
+			case 8:
+				maximo = max_energia_agosto; 
+				break;
+			case 9:
+				maximo = max_energia_septiembre; 
+				break;
+			case 10:
+				maximo = max_energia_octubre; 
+				break;
+			case 11:
+				maximo = max_energia_noviembre; 
+				break;
+			case 12:
+				maximo = max_energia_diciembre; 
+				break;
+		}
+	}
+	return maximo;
+}
+
+float energia_min_2022(int mes)
+{
+	FILE *plectura;
+	float enero_2022[22],febrero_2022[22],marzo_2022[22],abril_2022[22],mayo_2022[22],junio_2022[22];
+	float julio_2022[22],agosto_2022[22],septiembre_2022[22],octubre_2022[22],noviembre_2022[22],diciembre_2022[22];
+	float minimo;
+	int i;
+	plectura = fopen("generacion_por_tecnologias_21_22_puntos_simplificado_solo_energias_2022.csv", "r");
+	if (plectura == NULL)
+  	{
+    printf("ERROR AL ABRIR EL FICHERO DE LECTURA");
+  	}
+	else
+	{
+		for(i=0;i<22;i++)
+		{
+			fscanf(plectura, "%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f", &enero_2022[i],&febrero_2022[i],&marzo_2022[i],&abril_2022[i],&mayo_2022[i],&junio_2022[i],&julio_2022[i],&agosto_2022[i],&septiembre_2022[i],&octubre_2022[i],&noviembre_2022[i],&diciembre_2022[i]);
+		}
+		fclose(plectura);
+		
+		float min_energia_enero = enero_2022[0];
+		float min_energia_febrero = febrero_2022[0];
+		float min_energia_marzo = marzo_2022[0];
+		float min_energia_abril = abril_2022[0];
+		float min_energia_mayo = mayo_2022[0];
+		float min_energia_junio = junio_2022[0];
+		float min_energia_julio = julio_2022[0];
+		float min_energia_agosto = agosto_2022[0];
+		float min_energia_septiembre = septiembre_2022[0];
+		float min_energia_octubre = octubre_2022[0];
+		float min_energia_noviembre = noviembre_2022[0];
+		float min_energia_diciembre = diciembre_2022[0];
+		
+		for(i=0;i<21;i++) //el bucle se hace hasta 21 porque la ultima posicion del vector es la energia total que no tenemos en cuenta para buscar el minimo
+		{
+			if(enero_2022[i] < min_energia_enero)
+			{
+				min_energia_enero = enero_2022[i];
+			}
+			if(febrero_2022[i] < min_energia_febrero)
+			{
+				min_energia_febrero = febrero_2022[i];
+			}
+			if(marzo_2022[i] < min_energia_marzo)
+			{
+				min_energia_marzo = marzo_2022[i];
+			}
+			if(abril_2022[i] < min_energia_abril)
+			{
+				min_energia_abril = abril_2022[i];
+			}
+			if(mayo_2022[i] < min_energia_mayo)
+			{
+				min_energia_mayo = mayo_2022[i];
+			}
+			if(junio_2022[i] < min_energia_junio)
+			{
+				min_energia_junio = junio_2022[i];
+			}
+			if(julio_2022[i] < min_energia_julio)
+			{
+				min_energia_julio = julio_2022[i];
+			}
+			if(agosto_2022[i] < min_energia_agosto)
+			{
+				min_energia_agosto = agosto_2022[i];
+			}
+			if(septiembre_2022[i] < min_energia_septiembre)
+			{
+				min_energia_septiembre = septiembre_2022[i];
+			}
+			if(octubre_2022[i] < min_energia_octubre)
+			{
+				min_energia_octubre = octubre_2022[i];
+			}
+			if(noviembre_2022[i] < min_energia_noviembre)
+			{
+				min_energia_noviembre = noviembre_2022[i];
+			}
+			if(diciembre_2022[i] < min_energia_diciembre)
+			{
+				min_energia_diciembre = diciembre_2022[i];
+			}
+			
+		}
+		
+		switch(mes)
+		{
+			case 1:
+				minimo = min_energia_enero; 
+				break;
+			case 2:
+				minimo = min_energia_febrero; 
+				break;
+			case 3:
+				minimo = min_energia_marzo; 
+				break;
+			case 4:
+				minimo = min_energia_abril; 
+				break;
+			case 5:
+				minimo = min_energia_mayo; 
+				break;
+			case 6:
+				minimo = min_energia_junio; 
+				break;
+			case 7:
+				minimo = min_energia_julio; 
+				break;
+			case 8:
+				minimo = min_energia_agosto; 
+				break;
+			case 9:
+				minimo = min_energia_septiembre; 
+				break;
+			case 10:
+				minimo = min_energia_octubre; 
+				break;
+			case 11:
+				minimo = min_energia_noviembre; 
+				break;
+			case 12:
+				minimo = min_energia_diciembre; 
+				break;
+		}
+	}
+	return minimo;
+}
+
+float rango_energia_2022(int mes)
+{
+	float rango;
+	switch(mes)
+		{
+			case 1:
+				rango = energia_max_2022(1)-energia_min_2022(1); 
+				break;
+			case 2:
+				rango = energia_max_2022(2)-energia_min_2022(2); 
+				break;
+			case 3:
+				rango = energia_max_2022(3)-energia_min_2022(3); 
+				break;
+			case 4:
+				rango = energia_max_2022(4)-energia_min_2022(4); 
+				break;
+			case 5:
+				rango = energia_max_2022(5)-energia_min_2022(5); 
+				break;
+			case 6:
+				rango = energia_max_2022(6)-energia_min_2022(6); 
+				break;
+			case 7:
+				rango = energia_max_2022(7)-energia_min_2022(7); 
+				break;
+			case 8:
+				rango = energia_max_2022(8)-energia_min_2022(8);  
+				break;
+			case 9:
+				rango = energia_max_2022(9)-energia_min_2022(9);  
+				break;
+			case 10:
+				rango = energia_max_2022(10)-energia_min_2022(10);  
+				break;
+			case 11:
+				rango = energia_max_2022(11)-energia_min_2022(11);  
+				break;
+			case 12:
+				rango = energia_max_2022(12)-energia_min_2022(12); 
 				break;
 		}
 	return rango;
