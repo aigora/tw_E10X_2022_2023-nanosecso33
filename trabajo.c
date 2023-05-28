@@ -81,14 +81,15 @@ int main()
 		{
 			printf("Fichero abierto correctamente.\n\n");
 		}
-		while(opcion3<1 || opcion3>4)
+		while(opcion3<1 || opcion3>5)
 		{
 			fflush(stdin);
 			printf("MENU PARA LA APERTURA DE DATOS\n\nIndique la opcion que desea seleccionar:\n\n");
 			printf("1. Realizar un calculo con los datos deseados.\n");
 			printf("2. Mostrar los datos mensuales para analizarlos.\n");
 			printf("3. Clasificar las secciones en energia renovable y no renovable.\n");
-			printf("4. Salir.\n\n");
+			printf("4. Plan de nergia recomendada para grupos.\n");
+			printf("5. Salir.\n\n");
 			printf("Opcion a elegir: ");
 			scanf("%i", &opcion3);
 		}
@@ -245,9 +246,80 @@ int main()
             scanf("%i", &opcion5);
             buscarPorTipo(pf, opcion5);
 		}
+		else if(opcion3==4)
+		{
+			system("cls");
+			char nom1[20];
+			char nom2[20];
+			float con1=0;
+			char p1[100];
+			float con2=0;
+			char p2[100];
+			char nom3[20];
+			float con3=0;
+			char p3[100];
+			char nom4[20];
+			float con4=0;
+			char p4[100];
+			float mediacon=0;
+			
+			FILE *fptr;
+			fptr = fopen("Energia recomendada para grupos.txt","w");
+			fprintf(fptr,"Nombre y Apellidos\t Consumo\t Preferencia\t");
+			printf("Usuario n1 introduzca sus datos:\n");
+			printf("Escriba su nombre y apellidos:\t");
+			fflush(stdin);
+			scanf("%[^\n]", nom1);
+			printf("Escriba su consumo:\t");
+			fflush(stdin);
+			scanf("%f", &con1);
+			printf("Escoja entre renovable o no renovable:\t");
+			fflush(stdin);
+			scanf("%[^\n]", p1);
+			fprintf(fptr,"\n %s\t %f\t %s\t", nom1, con1, p1);
+			
+			printf("\nUsuario n2 introduzca sus datos:\n");
+			fflush(stdin);
+			printf("Escriba su nombre y apellidos:\t");
+			scanf("%[^\n]", nom2);
+			fflush(stdin);
+			printf("Escriba su consumo:\t");
+			scanf("%f", &con2);
+			fflush(stdin);
+			printf("Escoja entre renovable o no renovable:\t");
+			scanf("%[^\n]", p2);
+			fprintf(fptr,"\n %s\t %f\t %s\t", nom2, con2, p2);
+			
+			printf("\nUsuario n3 introduzca sus datos:\n");
+			fflush(stdin);
+			printf("Escriba su nombre y apellidos:\t");
+			scanf("%[^\n]", nom3);
+			fflush(stdin);
+			printf("Escriba su consumo:\t");
+			scanf("%f", &con3);
+			fflush(stdin);
+			printf("Escoja entre renovable o no renovable:\t");
+			scanf("%[^\n]", p3);
+			fprintf(fptr,"\n %s\t %f\t %s\t", nom3, con3, p3);
+			
+			printf("\nUsuario n4 introduzca sus datos:\n");
+			fflush(stdin);
+			printf("Escriba su nombre y apellidos:\t");
+			scanf("%[^\n]", nom4);
+			fflush(stdin);
+			printf("Escriba su consumo:\t");
+			scanf("%f", &con4);
+			fflush(stdin);
+			printf("Escoja entre renovable o no renovable:\t");
+			scanf("%[^\n]", p4);
+			fprintf(fptr,"\n %s\t %f\t %s\t", nom4, con4, p4);
+			mediacon=(con1 + con2 + con3 + con4)/4;
+			printf("\n El consumo medio es: %f", mediacon);
+			fprintf(fptr, "\n El consumo medio es: %f", mediacon);
+			}
 		else
 		{
-			printf("Fin del programa.\n");	
+			printf("\nFin del programa.\n");	
 		}
 		fclose(pf);
 	}
@@ -263,8 +335,8 @@ int main()
 float energia_media_2021(int mes)
 {
 	FILE *plectura;
-	float enero_2021[22],febrero_2021[22],marzo_2021[22],abril_2021[22],mayo_2021[22],junio_2021[22];
-	float julio_2021[22],agosto_2021[22],septiembre_2021[22],octubre_2021[22],noviembre_2021[22],diciembre_2021[22];
+	float enero_2021[17],febrero_2021[17],marzo_2021[17],abril_2021[17],mayo_2021[17],junio_2021[17];
+	float julio_2021[17],agosto_2021[17],septiembre_2021[17],octubre_2021[17],noviembre_2021[17],diciembre_2021[17];
 	float media;
 	int i;
 	plectura = fopen("generacion_por_tecnologias_21_22_puntos_simplificado_solo_energias_2021.csv", "r");
@@ -274,7 +346,7 @@ float energia_media_2021(int mes)
   	}
 	else
 	{
-		for(i=0;i<22;i++)
+		for(i=0;i<17;i++)
 		{
 			fscanf(plectura, "%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f", &enero_2021[i],&febrero_2021[i],&marzo_2021[i],&abril_2021[i],&mayo_2021[i],&junio_2021[i],&julio_2021[i],&agosto_2021[i],&septiembre_2021[i],&octubre_2021[i],&noviembre_2021[i],&diciembre_2021[i]);
 		}
@@ -283,40 +355,40 @@ float energia_media_2021(int mes)
 		switch(mes)
 		{
 			case 1:
-				media = enero_2021[21]/21; //dividimos entre 21 porque es el numero total de energias que tenemos
+				media = enero_2021[16]/16; //dividimos entre 16 porque es el numero total de energias que tenemos
 				break;
 			case 2:
-				media = febrero_2021[21]/21; 
+				media = febrero_2021[16]/16; 
 				break;
 			case 3:
-				media = marzo_2021[21]/21; 
+				media = marzo_2021[16]/16; 
 				break;
 			case 4:
-				media = abril_2021[21]/21; 
+				media = abril_2021[16]/16; 
 				break;
 			case 5:
-				media = mayo_2021[21]/21; 
+				media = mayo_2021[16]/16; 
 				break;
 			case 6:
-				media = junio_2021[21]/21; 
+				media = junio_2021[16]/16; 
 				break;
 			case 7:
-				media = julio_2021[21]/21; 
+				media = julio_2021[16]/16; 
 				break;
 			case 8:
-				media = agosto_2021[21]/21; 
+				media = agosto_2021[16]/16; 
 				break;
 			case 9:
-				media = septiembre_2021[21]/21;
+				media = septiembre_2021[16]/16;
 				break;
 			case 10:
-				media = octubre_2021[21]/21;
+				media = octubre_2021[16]/16;
 				break;
 			case 11:
-				media = noviembre_2021[21]/21;
+				media = noviembre_2021[16]/16;
 				break;
 			case 12:
-				media = diciembre_2021[21]/21; 
+				media = diciembre_2021[16]/16; 
 				break;
 			
 		}
@@ -328,8 +400,8 @@ float energia_media_2021(int mes)
 float energia_total_2021(int mes)
 {
 	FILE *plectura;
-	float enero_2021[22],febrero_2021[22],marzo_2021[22],abril_2021[22],mayo_2021[22],junio_2021[22];
-	float julio_2021[22],agosto_2021[22],septiembre_2021[22],octubre_2021[22],noviembre_2021[22],diciembre_2021[22];
+	float enero_2021[17],febrero_2021[17],marzo_2021[17],abril_2021[17],mayo_2021[17],junio_2021[17];
+	float julio_2021[17],agosto_2021[17],septiembre_2021[17],octubre_2021[17],noviembre_2021[17],diciembre_2021[17];
 	float total;
 	int i;
 	plectura = fopen("generacion_por_tecnologias_21_22_puntos_simplificado_solo_energias_2021.csv", "r");
@@ -339,7 +411,7 @@ float energia_total_2021(int mes)
   	}
 	else
 	{
-		for(i=0;i<22;i++)
+		for(i=0;i<17;i++)
 		{
 			fscanf(plectura, "%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f", &enero_2021[i],&febrero_2021[i],&marzo_2021[i],&abril_2021[i],&mayo_2021[i],&junio_2021[i],&julio_2021[i],&agosto_2021[i],&septiembre_2021[i],&octubre_2021[i],&noviembre_2021[i],&diciembre_2021[i]);
 		}
@@ -348,40 +420,40 @@ float energia_total_2021(int mes)
 		switch(mes)
 		{
 			case 1:
-				total = enero_2021[21]; //en vez de sumar todas las energias, tenemos que la energia total es el ultimo dato del vector
+				total = enero_2021[16]; //en vez de sumar todas las energias, tenemos que la energia total es el ultimo dato del vector
 				break;
 			case 2:
-				total = febrero_2021[21]; 
+				total = febrero_2021[16]; 
 				break;
 			case 3:
-				total = marzo_2021[21]; 
+				total = marzo_2021[16]; 
 				break;
 			case 4:
-				total = abril_2021[21]; 
+				total = abril_2021[16]; 
 				break;
 			case 5:
-				total = mayo_2021[21]; 
+				total = mayo_2021[16]; 
 				break;
 			case 6:
-				total = junio_2021[21]; 
+				total = junio_2021[16]; 
 				break;
 			case 7:
-				total = julio_2021[21]; 
+				total = julio_2021[16]; 
 				break;
 			case 8:
-				total = agosto_2021[21]; 
+				total = agosto_2021[16]; 
 				break;
 			case 9:
-				total = septiembre_2021[21];
+				total = septiembre_2021[16];
 				break;
 			case 10:
-				total = octubre_2021[21];
+				total = octubre_2021[16];
 				break;
 			case 11:
-				total = noviembre_2021[21];
+				total = noviembre_2021[16];
 				break;
 			case 12:
-				total = diciembre_2021[21]; 
+				total = diciembre_2021[16]; 
 				break;
 			
 		}
@@ -393,8 +465,8 @@ float energia_total_2021(int mes)
 float energia_max_2021(int mes)
 {
 	FILE *plectura;
-	float enero_2021[22],febrero_2021[22],marzo_2021[22],abril_2021[22],mayo_2021[22],junio_2021[22];
-	float julio_2021[22],agosto_2021[22],septiembre_2021[22],octubre_2021[22],noviembre_2021[22],diciembre_2021[22];
+	float enero_2021[17],febrero_2021[17],marzo_2021[17],abril_2021[17],mayo_2021[17],junio_2021[17];
+	float julio_2021[17],agosto_2021[17],septiembre_2021[17],octubre_2021[17],noviembre_2021[17],diciembre_2021[17];
 	float maximo;
 	int i;
 	plectura = fopen("generacion_por_tecnologias_21_22_puntos_simplificado_solo_energias_2021.csv", "r");
@@ -404,7 +476,7 @@ float energia_max_2021(int mes)
   	}
 	else
 	{
-		for(i=0;i<22;i++)
+		for(i=0;i<17;i++)
 		{
 			fscanf(plectura, "%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f", &enero_2021[i],&febrero_2021[i],&marzo_2021[i],&abril_2021[i],&mayo_2021[i],&junio_2021[i],&julio_2021[i],&agosto_2021[i],&septiembre_2021[i],&octubre_2021[i],&noviembre_2021[i],&diciembre_2021[i]);
 		}
@@ -423,7 +495,7 @@ float energia_max_2021(int mes)
 		float max_energia_noviembre = noviembre_2021[0];
 		float max_energia_diciembre = diciembre_2021[0];
 		
-		for(i=0;i<21;i++) //el bucle se hace hasta 21 porque la ultima posicion del vector es la energia total que no tenemos en cuenta para buscar el maximo
+		for(i=0;i<16;i++) //el bucle se hace hasta 16 porque la ultima posicion del vector es la energia total que no tenemos en cuenta para buscar el maximo
 		{
 			if(enero_2021[i] > max_energia_enero)
 			{
@@ -523,8 +595,8 @@ float energia_max_2021(int mes)
 float energia_min_2021(int mes)
 {
 	FILE *plectura;
-	float enero_2021[22],febrero_2021[22],marzo_2021[22],abril_2021[22],mayo_2021[22],junio_2021[22];
-	float julio_2021[22],agosto_2021[22],septiembre_2021[22],octubre_2021[22],noviembre_2021[22],diciembre_2021[22];
+	float enero_2021[17],febrero_2021[17],marzo_2021[17],abril_2021[17],mayo_2021[17],junio_2021[17];
+	float julio_2021[17],agosto_2021[17],septiembre_2021[17],octubre_2021[17],noviembre_2021[17],diciembre_2021[17];
 	float minimo;
 	int i;
 	plectura = fopen("generacion_por_tecnologias_21_22_puntos_simplificado_solo_energias_2021.csv", "r");
@@ -534,7 +606,7 @@ float energia_min_2021(int mes)
   	}
 	else
 	{
-		for(i=0;i<22;i++)
+		for(i=0;i<17;i++)
 		{
 			fscanf(plectura, "%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f", &enero_2021[i],&febrero_2021[i],&marzo_2021[i],&abril_2021[i],&mayo_2021[i],&junio_2021[i],&julio_2021[i],&agosto_2021[i],&septiembre_2021[i],&octubre_2021[i],&noviembre_2021[i],&diciembre_2021[i]);
 		}
@@ -553,7 +625,7 @@ float energia_min_2021(int mes)
 		float min_energia_noviembre = noviembre_2021[0];
 		float min_energia_diciembre = diciembre_2021[0];
 		
-		for(i=0;i<21;i++) //el bucle se hace hasta 21 porque la ultima posicion del vector es la energia total que no tenemos en cuenta para buscar el minimo
+		for(i=0;i<16;i++) //el bucle se hace hasta 16 porque la ultima posicion del vector es la energia total que no tenemos en cuenta para buscar el minimo
 		{
 			if(enero_2021[i] < min_energia_enero)
 			{
@@ -699,8 +771,8 @@ float rango_energia_2021(int mes)
 float energia_media_2022(int mes)
 {
 	FILE *plectura;
-	float enero_2022[22],febrero_2022[22],marzo_2022[22],abril_2022[22],mayo_2022[22],junio_2022[22];
-	float julio_2022[22],agosto_2022[22],septiembre_2022[22],octubre_2022[22],noviembre_2022[22],diciembre_2022[22];
+	float enero_2022[17],febrero_2022[17],marzo_2022[17],abril_2022[17],mayo_2022[17],junio_2022[17];
+	float julio_2022[17],agosto_2022[17],septiembre_2022[17],octubre_2022[17],noviembre_2022[17],diciembre_2022[17];
 	float media2;
 	int i;
 	plectura = fopen("generacion_por_tecnologias_21_22_puntos_simplificado_solo_energias_2022.csv", "r");
@@ -710,7 +782,7 @@ float energia_media_2022(int mes)
   	}
 	else
 	{
-		for(i=0;i<22;i++)
+		for(i=0;i<17;i++)
 		{
 			fscanf(plectura, "%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f", &enero_2022[i],&febrero_2022[i],&marzo_2022[i],&abril_2022[i],&mayo_2022[i],&junio_2022[i],&julio_2022[i],&agosto_2022[i],&septiembre_2022[i],&octubre_2022[i],&noviembre_2022[i],&diciembre_2022[i]);
 		}
@@ -719,40 +791,40 @@ float energia_media_2022(int mes)
 		switch(mes)
 		{
 			case 1:
-				media2 = enero_2022[21]/21.0; //dividimos entre 21 porque es el numero total de energias que tenemos
+				media2 = enero_2022[16]/16.0; //dividimos entre 16 porque es el numero total de energias que tenemos
 				break;
 			case 2:
-				media2 = febrero_2022[21]/21.0; 
+				media2 = febrero_2022[16]/16.0; 
 				break;
 			case 3:
-				media2 = marzo_2022[21]/21.0; 
+				media2 = marzo_2022[16]/16.0; 
 				break;
 			case 4:
-				media2 = abril_2022[21]/21.0; 
+				media2 = abril_2022[16]/16.0; 
 				break;
 			case 5:
-				media2 = mayo_2022[21]/21.0; 
+				media2 = mayo_2022[16]/16.0; 
 				break;
 			case 6:
-				media2 = junio_2022[21]/21.0; 
+				media2 = junio_2022[16]/16.0; 
 				break;
 			case 7:
-				media2 = julio_2022[21]/21.0; 
+				media2 = julio_2022[16]/16.0; 
 				break;
 			case 8:
-				media2 = agosto_2022[21]/21.0; 
+				media2 = agosto_2022[16]/16.0; 
 				break;
 			case 9:
-				media2 = septiembre_2022[21]/21.0;
+				media2 = septiembre_2022[16]/16.0;
 				break;
 			case 10:
-				media2 = octubre_2022[21]/21.0;
+				media2 = octubre_2022[16]/16.0;
 				break;
 			case 11:
-				media2 = noviembre_2022[21]/21.0;
+				media2 = noviembre_2022[16]/16.0;
 				break;
 			case 12:
-				media2 = diciembre_2022[21]/21.0; 
+				media2 = diciembre_2022[16]/16.0; 
 				break;
 			
 		}
@@ -763,8 +835,8 @@ float energia_media_2022(int mes)
 float energia_total_2022(int mes)
 {
 	FILE *plectura;
-	float enero_2022[22],febrero_2022[22],marzo_2022[22],abril_2022[22],mayo_2022[22],junio_2022[22];
-	float julio_2022[22],agosto_2022[22],septiembre_2022[22],octubre_2022[22],noviembre_2022[22],diciembre_2022[22];
+	float enero_2022[17],febrero_2022[17],marzo_2022[17],abril_2022[17],mayo_2022[17],junio_2022[17];
+	float julio_2022[17],agosto_2022[17],septiembre_2022[17],octubre_2022[17],noviembre_2022[17],diciembre_2022[17];
 	float total;
 	int i;
 	plectura = fopen("generacion_por_tecnologias_21_22_puntos_simplificado_solo_energias_2022.csv", "r");
@@ -774,7 +846,7 @@ float energia_total_2022(int mes)
   	}
 	else
 	{
-		for(i=0;i<22;i++)
+		for(i=0;i<17;i++)
 		{
 			fscanf(plectura, "%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f", &enero_2022[i],&febrero_2022[i],&marzo_2022[i],&abril_2022[i],&mayo_2022[i],&junio_2022[i],&julio_2022[i],&agosto_2022[i],&septiembre_2022[i],&octubre_2022[i],&noviembre_2022[i],&diciembre_2022[i]);
 		}
@@ -783,40 +855,40 @@ float energia_total_2022(int mes)
 		switch(mes)
 		{
 			case 1:
-				total = enero_2022[21]; //en vez de sumar todas las energias, tenemos que la energia total es el ultimo dato del vector
+				total = enero_2022[16]; //en vez de sumar todas las energias, tenemos que la energia total es el ultimo dato del vector
 				break;
 			case 2:
-				total = febrero_2022[21]; 
+				total = febrero_2022[16]; 
 				break;
 			case 3:
-				total = marzo_2022[21]; 
+				total = marzo_2022[16]; 
 				break;
 			case 4:
-				total = abril_2022[21]; 
+				total = abril_2022[16]; 
 				break;
 			case 5:
-				total = mayo_2022[21]; 
+				total = mayo_2022[16]; 
 				break;
 			case 6:
-				total = junio_2022[21]; 
+				total = junio_2022[16]; 
 				break;
 			case 7:
-				total = julio_2022[21]; 
+				total = julio_2022[16]; 
 				break;
 			case 8:
-				total = agosto_2022[21]; 
+				total = agosto_2022[16]; 
 				break;
 			case 9:
-				total = septiembre_2022[21];
+				total = septiembre_2022[16];
 				break;
 			case 10:
-				total = octubre_2022[21];
+				total = octubre_2022[16];
 				break;
 			case 11:
-				total = noviembre_2022[21];
+				total = noviembre_2022[16];
 				break;
 			case 12:
-				total = diciembre_2022[21]; 
+				total = diciembre_2022[16]; 
 				break;
 			
 		}
@@ -827,8 +899,8 @@ float energia_total_2022(int mes)
 float energia_max_2022(int mes)
 {
 	FILE *plectura;
-	float enero_2022[22],febrero_2022[22],marzo_2022[22],abril_2022[22],mayo_2022[22],junio_2022[22];
-	float julio_2022[22],agosto_2022[22],septiembre_2022[22],octubre_2022[22],noviembre_2022[22],diciembre_2022[22];
+	float enero_2022[17],febrero_2022[17],marzo_2022[17],abril_2022[17],mayo_2022[17],junio_2022[17];
+	float julio_2022[17],agosto_2022[17],septiembre_2022[17],octubre_2022[17],noviembre_2022[17],diciembre_2022[17];
 	float maximo;
 	int i;
 	plectura = fopen("generacion_por_tecnologias_21_22_puntos_simplificado_solo_energias_2022.csv", "r");
@@ -838,7 +910,7 @@ float energia_max_2022(int mes)
   	}
 	else
 	{
-		for(i=0;i<22;i++)
+		for(i=0;i<17;i++)
 		{
 			fscanf(plectura, "%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f", &enero_2022[i],&febrero_2022[i],&marzo_2022[i],&abril_2022[i],&mayo_2022[i],&junio_2022[i],&julio_2022[i],&agosto_2022[i],&septiembre_2022[i],&octubre_2022[i],&noviembre_2022[i],&diciembre_2022[i]);
 		}
@@ -857,7 +929,7 @@ float energia_max_2022(int mes)
 		float max_energia_noviembre = noviembre_2022[0];
 		float max_energia_diciembre = diciembre_2022[0];
 		
-		for(i=0;i<21;i++) //el bucle se hace hasta 21 porque la ultima posicion del vector es la energia total que no tenemos en cuenta para buscar el maximo
+		for(i=0;i<16;i++) //el bucle se hace hasta 16 porque la ultima posicion del vector es la energia total que no tenemos en cuenta para buscar el maximo
 		{
 			if(enero_2022[i] > max_energia_enero)
 			{
@@ -956,8 +1028,8 @@ float energia_max_2022(int mes)
 float energia_min_2022(int mes)
 {
 	FILE *plectura;
-	float enero_2022[22],febrero_2022[22],marzo_2022[22],abril_2022[22],mayo_2022[22],junio_2022[22];
-	float julio_2022[22],agosto_2022[22],septiembre_2022[22],octubre_2022[22],noviembre_2022[22],diciembre_2022[22];
+	float enero_2022[17],febrero_2022[17],marzo_2022[17],abril_2022[17],mayo_2022[17],junio_2022[17];
+	float julio_2022[17],agosto_2022[17],septiembre_2022[17],octubre_2022[17],noviembre_2022[17],diciembre_2022[17];
 	float minimo;
 	int i;
 	plectura = fopen("generacion_por_tecnologias_21_22_puntos_simplificado_solo_energias_2022.csv", "r");
@@ -967,7 +1039,7 @@ float energia_min_2022(int mes)
   	}
 	else
 	{
-		for(i=0;i<22;i++)
+		for(i=0;i<17;i++)
 		{
 			fscanf(plectura, "%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f", &enero_2022[i],&febrero_2022[i],&marzo_2022[i],&abril_2022[i],&mayo_2022[i],&junio_2022[i],&julio_2022[i],&agosto_2022[i],&septiembre_2022[i],&octubre_2022[i],&noviembre_2022[i],&diciembre_2022[i]);
 		}
@@ -986,7 +1058,7 @@ float energia_min_2022(int mes)
 		float min_energia_noviembre = noviembre_2022[0];
 		float min_energia_diciembre = diciembre_2022[0];
 		
-		for(i=0;i<21;i++) //el bucle se hace hasta 21 porque la ultima posicion del vector es la energia total que no tenemos en cuenta para buscar el minimo
+		for(i=0;i<16;i++) //el bucle se hace hasta 16 porque la ultima posicion del vector es la energia total que no tenemos en cuenta para buscar el minimo
 		{
 			if(enero_2022[i] < min_energia_enero)
 			{
