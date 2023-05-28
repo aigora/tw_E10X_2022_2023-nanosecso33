@@ -88,7 +88,7 @@ int main()
 			printf("1. Realizar un calculo con los datos deseados.\n");
 			printf("2. Mostrar los datos mensuales para analizarlos.\n");
 			printf("3. Clasificar las secciones en energia renovable y no renovable.\n");
-			printf("4. Plan de nergia recomendada para grupos.\n");
+			printf("4. Plan de energia recomendada para grupos.\n");
 			printf("5. Salir.\n\n");
 			printf("Opcion a elegir: ");
 			scanf("%i", &opcion3);
