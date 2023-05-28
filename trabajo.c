@@ -71,7 +71,8 @@ int main()
 		int calculo_2021=0 /*elegir entre comparar todos los meses del 2021 o mirar solo uno*/, tipo_calculo=0 /*elegir calculo (2021)*/;
 		int calculo_2022 /*elegir entre comparar todos los meses del 2022 o mirar solo uno*/, tipo_calculo2=0 /*elegir calculo (2022)*/;
 		int mes1=0 /*seleccion de mes de la opcion 1 2021*/, mes2=0 /*seleccion de mes de la opcion 1 2022*/;
-		int mes3=0 /*seleccion de mes de la opcion 2 2021*/, mes4=0 /*seleccion de mes de la opcion 2 2022*/, opcion5=0 /*elegir entre renovable y no renovable*/;
+		int opcion6=0 /*seleccion de mes de la opcion 2 2021*/, opcion7=0 /*seleccion de mes de la opcion 2 2022*/, opcion5=0 /*elegir entre renovable y no renovable*/;
+		int anho /*elegir entre 2021 o 2022 en el apartado 2*/;
 		
 		FILE *pf;
 		pf = fopen("generacion_por_tecnologias_21_22_puntos_simplificado.csv", "r");
@@ -216,10 +217,9 @@ int main()
 		}
 		else if(opcion3==2)
 		{
-			while(opcion4!=1 && opcion4!=2)
+			while(anho!=1 && anho!=2)
 			{
-				fflush(stdin); 
-				int anho, opcion6, opcion7;
+				fflush(stdin);
 	            FILE *pdatos1;
 	            fopen("generacion_por_tecnologias_21_22_puntos_simplificado_solo_energias_2021.csv", "r");
 	            FILE *pdatos2;
